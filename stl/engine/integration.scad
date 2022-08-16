@@ -11,9 +11,9 @@
 // render the view.
 
 
-color("#000000") import("newframe.stl");
-translate([53.6,0,6.3])  color("#333333") import("cab.stl");
-translate([57.9,0,15.5]) color("#666666") import("firebox_backhead.stl");
-translate([-12,0,7.65])  color("#999999") import("smokebox_boiler_firebox.stl");
-translate([-12,0,15.38]) color("#CCCCCC") import("smokebox_front.stl");
-translate([-19.06,0,2])  color("#FFFFFF") import("frontend.stl");
+color("#000000") import("frame_forprint.stl");
+translate([53.6,0,6.3])  color("#333333") import("cab_forprint.stl");
+translate([57.9,0,15.5]) color("#666666") import("firebox_backhead_forprint.stl");
+translate([-12,0,7.65])  color("#999999") import("smokebox_boiler_firebox_forprint.stl");
+translate([-12,0,15.38]) color("#CCCCCC") import("smokebox_front_forprint.stl");
+translate([-19.06,0,2])  color("#FFFFFF") import("frontend_forprint.stl");
