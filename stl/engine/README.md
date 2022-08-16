@@ -25,7 +25,7 @@ testing, but I'd be happy to hear of better alternatives.
 ## Assembly
 
 The engine parts require two 0-80 screws and nuts for assembly, one through
-the cylinder chest into the smokebox (this scre will also attach the pilot
+the cylinder chest into the smokebox (this screw will also attach the pilot
 truck), and one through the rear frame through the cab attachment tab into
 the firebox backhead base.  The smokebox and firebox backhead have nut
 insets where the nuts can be glued with a small bit of CA adhesive.
