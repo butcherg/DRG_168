@@ -10,7 +10,9 @@ printing the frame in metal or hand-fabication in brass.
 Included in this directory is the file 'integration.scad'.  It imports all 
 the parts and renders them in their intended relationship to each other.  
 You can view this file by downloading and installing OpenSCAD and simply 
-opening the file.
+opening the file.  Here's a render from the script:
+
+![integration](integration.png)
 
 ## Printing
 
