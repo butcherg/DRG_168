@@ -1,9 +1,9 @@
 # DRG #168 Engine Core
 
 The six files in this directory are the core parts to assemble the basic
-engine.  The have been designed to allow a number of fabrication
-alternatives, particularly printing the frame in metal or hand-fabication
-in brass.  
+engine.  Their dimensions are expressed in millimeters to accommodate 3d printing. 
+The have been designed to allow a number of fabrication alternatives, particularly 
+printing the frame in metal or hand-fabication in brass.  
 
 ## Viewing
 
