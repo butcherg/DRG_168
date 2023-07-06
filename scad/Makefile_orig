@@ -1,0 +1,97 @@
+
+ROOTDIR=../..
+
+SCADs=frame.scad \
+smokebox_boiler_firebox.scad \
+smokebox_front.scad \
+firebox_backhead.scad \
+168_plate.scad \
+cab.scad \
+frontend_assembly.scad \
+sanddome.scad \
+steamdome.scad \
+footboards.scad \
+siderod.scad \
+connecting_rod.scad \
+crosshead.scad \
+compressor.scad \
+bell.scad \
+bellhangar.scad \
+bell_bellhangar.scad \
+generator.scad \
+headlamp.scad \
+smokestack.scad \
+RP25.scad \
+cistern.scad \
+tender_frame.scad \
+tender_truck.scad
+
+
+all: $(SCADs)
+
+frame.scad: $(ROOTDIR)/Frame/Alternate_Frame/frame.scad
+	cp $(ROOTDIR)/Frame/Alternate_Frame/frame.scad .
+
+smokebox_boiler_firebox.scad: $(ROOTDIR)/Boiler-Smokebox/proper_firebox/smokebox_boiler_firebox.scad
+	cp $(ROOTDIR)/Boiler-Smokebox/proper_firebox/smokebox_boiler_firebox.scad .
+
+smokebox_front.scad: $(ROOTDIR)/Boiler-Smokebox/smokebox_front.scad
+	cp $(ROOTDIR)/Boiler-Smokebox/smokebox_front.scad .
+
+firebox_backhead.scad: $(ROOTDIR)/Boiler-Smokebox/firebox_backhead.scad
+	cp $(ROOTDIR)/Boiler-Smokebox/firebox_backhead.scad .
+
+168_plate.scad: $(ROOTDIR)/Boiler-Smokebox/168_plate.scad
+	cp $(ROOTDIR)/Boiler-Smokebox/168_plate.scad .
+
+cab.scad: $(ROOTDIR)/Cab/cab.scad
+	cp $(ROOTDIR)/Cab/cab.scad .
+
+frontend_assembly.scad: $(ROOTDIR)/CylinderChest/frontend_assembly.scad
+	cp $(ROOTDIR)/CylinderChest/frontend_assembly.scad .
+
+sanddome.scad: $(ROOTDIR)/Domes/sanddome.scad
+	cp $(ROOTDIR)/Domes/sanddome.scad .
+
+steamdome.scad: $(ROOTDIR)/Domes/steamdome.scad
+	cp $(ROOTDIR)/Domes/steamdome.scad .
+
+footboards.scad: $(ROOTDIR)/Footboards/footboards.scad
+	cp $(ROOTDIR)/Footboards/footboards.scad .
+
+siderod.scad: $(ROOTDIR)/Rods/siderod.scad
+	cp $(ROOTDIR)/Rods/siderod.scad .
+
+connecting_rod.scad: $(ROOTDIR)/Rods/connecting_rod.scad
+	cp $(ROOTDIR)/Rods/connecting_rod.scad .
+
+crosshead.scad: $(ROOTDIR)/Rods/crosshead.scad
+	cp $(ROOTDIR)/Rods/crosshead.scad .
+
+compressor.scad: $(ROOTDIR)/Appliances/compressor.scad
+	cp $(ROOTDIR)/Appliances/compressor.scad .
+
+bell_bellhangar.scad: $(ROOTDIR)/Appliances/bell_bellhangar.scad
+	cp $(ROOTDIR)/Appliances/bell_bellhangar.scad .
+
+generator.scad: $(ROOTDIR)/Appliances/generator.scad
+	cp $(ROOTDIR)/Appliances/generator.scad .
+
+headlamp.scad: $(ROOTDIR)/Appliances/headlamp.scad
+	cp $(ROOTDIR)/Appliances/headlamp.scad .
+
+smokestack.scad: $(ROOTDIR)/Appliances/smokestack.scad
+	cp $(ROOTDIR)/Appliances/smokestack.scad .
+
+RP25.scad: $(ROOTDIR)/Wheels/RP25.scad
+	cp $(ROOTDIR)/Wheels/RP25.scad .
+
+cistern.scad: $(ROOTDIR)/Tender/cistern.scad
+	cp $(ROOTDIR)/Tender/cistern.scad .
+
+tender_frame.scad: $(ROOTDIR)/Tender/tender_frame.scad
+	cp $(ROOTDIR)/Tender/tender_frame.scad .
+
+tender_truck.scad: $(ROOTDIR)/Tender/tender_truck.scad
+	cp $(ROOTDIR)/Tender/tender_truck.scad .
+
