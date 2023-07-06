@@ -1,5 +1,7 @@
 # DRG 168
 
+![DRG_168](stl_integration.png)
+
 Commputer-Aided-Design (CAD) files to produce a HOn3 model of Denver Rio Grande locomotive #168.  This steam locomotive operated on the DRG from about 1883 to 1933.  It was donated to the city of Colorado Springs, Colorado, where it was put on display in the downtown Antlers Park.  In 2015, it was leased to the Cumbres and Toltec Scenic Railroad (C&TS) for restoration to operation.  It now runs special trains on the C&TS from Antonito, Colorado.
 
 The locomotive design was created using OpenSCAD, a script-based CAD, open-source.  This program may be downloaded at https://openscad.org/ 
