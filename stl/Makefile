@@ -29,4 +29,4 @@ dist:
 	$(OPENSCAD) --export-format 3mf -o DRG_168/stl_integration.3mf DRG_168/foo.scad
 	rm DRG_168/foo.scad
 	tar -czvf DRG_168_STLs.tar.gz DRG_168
-#	rm -rf DRG_168
+	rm -rf DRG_168
