@@ -14,7 +14,7 @@ rear_driver=2.37;
 
 frontend_assembly_position = [-0.785, 0, 0.08]; 
 
-smokebox_boiler_firebox_position = [-0.47, 0, 0.306]; 
+smokebox_boiler_firebox_position = [-0.462, 0, 0.295]; 
 smokebox_front_position = [-0.476, 0, 0.61]; 
 168_plate_position = [-0.53, 0, 0.61];
 footboards_position = [-0.748, 0, 0]; 
