@@ -2,6 +2,9 @@ include <../lib/Round-Anything/polyround.scad>
 use <../lib/utilities.scad>
 use <../lib/cab_floor.scad>
 
+include <../lib/utilities.scad>
+include <../lib/globals.scad>
+
 front_pts1 = [ 
 [0.0000,0.0000,0.0000],
 [0.0000,0.7200,0.0000],
@@ -9,7 +12,6 @@ front_pts1 = [
 [1.0300,0.7200,0.0000],
 [1.0300,0.0000,0.0000]
 ];
-
 
 side_pts1 = [
 [0.0000,0.0000,0.0000],
@@ -22,21 +24,6 @@ side_pts1 = [
 [0.7500,0.6300,0.0000],
 [0.7500,0.0000,0.0000]
 ];
-
-/*
-rear_pts = [ 
-[0.0000,0.0000,0.0000],
-[0.0000,0.7200,0.0000],
-[0.5000,0.8650,26.0000],
-[1.0300,0.7200,0.0000],
-[1.0300,0.0000,0.0000],
-[0.7800,0.0000,0.0000],
-[0.7800,0.7080,0.0200],
-[0.5000,0.7300,1.000],
-[0.2500,0.7080,0.0200],
-[0.2500,0.0000,0.0000]
-];
-*/
 
 rear_pts = [
 [0.000,0.000,0.000],
@@ -96,8 +83,6 @@ module cab_side() {
 	}
 	
 	translate([0.38,0.24,0]) cube([0.3,0.02,0.05]); //window sill
-	
-	//window
 
 }
 
@@ -140,10 +125,7 @@ module cabshell() {
 			cube([1, 0.65, 0.4], center=true);
 		}
 	}
-	
-	//translate([-0.0001,-0.445,0.13]) cube([0.01,0.07,0.2]);
-	//	translate([-0.0001,0.395,0.13]) cube([0.01,0.07,0.2]);
-	
+		
 	//rear wall:
 	difference() {
 		translate([0.72,-0.5,0]) rotate([ 90,0,90]) linear_extrude(.03) polygon(polyRound(rear_pts));
@@ -176,4 +158,9 @@ module cab() {
 $fn =  $preview ? 90 : 180;
 
 scale(25.4)
-	cab($fn=90);
+	translate(-cab_position)
+	difference () {
+		translate(cab_position) cab($fn=90);
+		translate([rear_screw_hole,0,0]) cylinder(h=2, d=screwhole_0_80, $fn=90);
+		
+	}

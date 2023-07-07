@@ -10,9 +10,9 @@ module smokebox(decor=true) {
 	translate([0,0,0.61/2]) {//bottom on x axis
 		difference() {
 			boilercourse(0.61, 0.6, 0.05); //smokebox
-			translate([0.315, 0, -0.5]) cylinder(h=0.5, r=0.04, $fn=90);  //screw hole
+			//translate([0.315, 0, -0.5]) cylinder(h=0.5, r=0.04, $fn=90);  //screw hole
 		}
-		//boilercourse(0.61, 0.05, 0.1); //gluing flange for smokebox front
+		boilercourse(0.61, 0.05, 0.1); //gluing flange for smokebox front
 		translate([0,-0.02, -0.61/2]) cube([0.1, 0.04, 0.08]);
 		
 		if (decor) {
@@ -39,7 +39,7 @@ module smokebox(decor=true) {
 					scale([0.001,0.001,0.001]) 
 						168_plaque($fn=buildplatefn);
 
-			translate([0.309,0,-(0.61/2)+0.026]) nutretainer_0_80(d=0.21);
+			//translate([0.309,0,-(0.61/2)+0.026]) nutretainer_0_80(d=0.21);
 					
 			//rotate([40,0,0]) translate([0.3,0,0.61/2]) stanchion(height=0.08);
 			//rotate([-40,0,0]) translate([0.3,0,0.61/2]) stanchion(height=0.08);

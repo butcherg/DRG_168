@@ -1,5 +1,6 @@
 include <../lib/Round-Anything/polyround.scad>
 include <../lib/utilities.scad>
+include <../lib/globals.scad>
 
 //for integration:
 //use <../lib/separate_courses/firebox.scad>
@@ -54,34 +55,27 @@ module firebox_backhead() {
 	//backhead base:
 	basewidth=0.19;
 	baseheight=0.08;
-	/*
-	translate([-0.1,-basewidth/2,-0.39]) 
-		difference() {
-			cube([0.3,basewidth,0.16]);
-			union() {
-				translate([-0.001,basewidth/2,0.39]) rotate([0,90,0]) cylinder(h=basewidth, d=0.57); //cuts channel flush with firebox circumference
-				translate([-0.001, 0.02, 0.03]) cube([0.3, 0.2, 0.3]); //channel
-				translate([0.11, basewidth/2, -1]) cylinder(h=2, d=screwhole_0_80, $fn=90);  //screw hole
-			}
-		}
-	*/
 
 	//base:
 	translate([0.09, -basewidth/2, -0.34]) cube([0.1, basewidth, baseheight]); 
-	difference() {
-		translate([0.19,-basewidth/2,-0.26]) rotate([0,180,0]) frame_channel(length=0.33, width=basewidth, height=baseheight);
-		translate([-0.04, 0, -1]) cylinder(h=2, d=screwhole_0_80, $fn=90);  //screw hole
-	}
-		
+	translate([0.19,-basewidth/2,-0.26]) rotate([0,180,0]) frame_channel(length=0.33, width=basewidth, height=baseheight);
 	
 	translate([0.15,0,0]) rivet_cylinder(diameter=0.3, start_deg=210, end_deg=360, spacing_deg=10);
 	translate([0.15,0,0]) rivet_cylinder(diameter=0.3, start_deg=10, end_deg=150, spacing_deg=10);
 		
-	translate([-0.045,0,-0.33]) nutretainer_0_80(d=(5/32)*1.3);
 }
 
-scale(25.4)
-	firebox_backhead($fn=360);
+$fn = $preview ? 90 : 360;
+
+scale(25.4) {
+	translate(-firebox_backhead_position) {
+		difference() {
+			translate(firebox_backhead_position) firebox_backhead();
+			translate([rear_screw_hole,0,0]) cylinder(h=2, d=screwhole_0_80, $fn=90);
+		}
+		translate([rear_screw_hole,0,0.324]) nutretainer_0_80(d=(5/32)*1.3);
+	}
+}
 
 //for integration:
 //firebox();

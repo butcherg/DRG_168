@@ -1,4 +1,5 @@
 include <../lib/utilities.scad>
+include <../lib/globals.scad>
 
 framelength=3.59-0.75-0.34;
 framewidth=0.25;  //0.25 to accomodate the firebox overhangs, would prefer 0.29 but oh well...
@@ -35,11 +36,6 @@ module driver_slots() {
 }
 
 module frame_voids() {
-	//frame screw holes:
-	translate([3-0.75, framewidth/2, 0]) cylinder(h=2, d=screwhole_0_80, $fn=90);
-	//translate([0.595-0.75, framewidth/2, 0]) cylinder(h=2, d=screwhole_0_80, $fn=90);
-	translate([0.62-0.75, framewidth/2, 0]) cylinder(h=2, d=screwhole_0_80, $fn=90);
-
 	//valvegear hangar mounting slot:
 	translate([0.54, -0.35, 0.19]) cube([0.02, 1, 0.1]);
 	
@@ -102,7 +98,10 @@ module frame(tab=true) {
 
 $fn = $preview ? 90 : 180;
 
-//translate([0.75,0,0.0]) 
 scale(25.4)
-	frame();
-
+	difference() {
+		frame();
+		//frame screw holes, with x values from globals.scad:
+		translate([front_screw_hole,0,-1]) cylinder(h=2, d=screwhole_0_80, $fn=90);
+		translate([rear_screw_hole,0,-1]) cylinder(h=2, d=screwhole_0_80, $fn=90);
+	}

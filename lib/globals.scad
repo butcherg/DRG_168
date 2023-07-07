@@ -10,11 +10,17 @@ front_driver=0.79;
 main_driver=1.39;
 rear_driver=2.37;
 
+//screw hole x coordinates
+
+front_screw_hole = -0.15;
+rear_screw_hole = 2.25;
+
 //translate vectors.  For each part, what it takes to orient it relative to the frame, in HO decimal inches
 
 frontend_assembly_position = [-0.785, 0, 0.08]; 
 
 smokebox_boiler_firebox_position = [-0.462, 0, 0.295]; 
+//smokebox_boiler_firebox_position = [-0.462, 0, 0.495]; 
 smokebox_front_position = [-0.476, 0, 0.61]; 
 168_plate_position = [-0.53, 0, 0.61];
 footboards_position = [-0.748, 0, 0]; 

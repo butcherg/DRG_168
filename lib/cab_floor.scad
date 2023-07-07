@@ -45,48 +45,16 @@ module cab_floor() {
 				cube([floorlength,floorwidth,floorthickness]);
 		}
 		union() {
-			//translate([-0.01,-(floorwidth-cabchannelwidth)/2+floorthickness,-0.5])
 			translate([-0.01, -cabchannelwidth/2+floorthickness, floorthickness])
 				cube([floorlength+0.2, cabchannelwidth-(floorthickness*2), 1]);
 			translate([-flooroffset-0.001,-0.59/2,floorthickness+0.06])
 				cube([floorlength-cabchannellength+0.02,0.59,1]);
-			translate([0.13, 0, -1]) cylinder(h=2, d=screwhole_0_80, $fn=90);
 		}
 	}
-	
-	/*
-	translate([floorlength-0.39-0.35,cabchannelwidth/2,.2]) 
-		rotate([180,0,0])
-			frame_channel(length=0.39+0.35, width=cabchannelwidth, height=0.2, thickness=floorthickness);
-	
-	translate([0,-floorwidth/2,0.2])
-		difference() {
-			cube([floorlength,floorwidth,floorthickness]);
-			union() {
-				//channel cutout:
-				translate([-0.01,(floorwidth-cabchannelwidth)/2+floorthickness,-0.5]) 
-					cube([floorlength+0.02, cabchannelwidth-(floorthickness*2), 1]);
-				//boiler cutout:
-				translate([-0.01,(floorwidth-0.59)/2,-0.5])
-					cube([floorlength-cabchannellength+0.01,0.59,1]);
-			}
-		}
-	*/
-	
-	//attachment tab:
-	/*
-	tabwidth=0.24;
-	tablength=0.35;
-	difference() {
-		translate([floorlength-0.39-tablength,-tabwidth/2,0.0]) cube([tablength,tabwidth, floorthickness+0.01]);
-		translate([0.13, 0, -1]) cylinder(h=2, d=screwhole_0_80, $fn=90);
-	}
-	*/
 	
 	//new members to accomodate new frame...
 	newframe();
 	
-		
 	translate([0.74, cabchannelwidth/2, 0]) 
 		rotate([0,0,90]) 
 			cab_rear_support();
@@ -96,55 +64,6 @@ module cab_floor() {
 }
 
 
-module cab_floor_old() {
-	translate([floorlength-0.39,cabchannelwidth/2,.2]) 
-		rotate([180,0,0])
-			frame_channel(length=0.39, width=cabchannelwidth, height=0.2, thickness=floorthickness);
-	
-	translate([0,-floorwidth/2,0.2])
-		difference() {
-			cube([floorlength,floorwidth,floorthickness]);
-			union() {
-				//channel cutout:
-				translate([-0.01,(floorwidth-cabchannelwidth)/2+floorthickness,-0.5]) 
-					cube([floorlength+0.02, cabchannelwidth-(floorthickness*2), 1]);
-				//boiler cutout:
-				translate([-0.01,(floorwidth-0.59)/2,-0.5])
-					cube([floorlength-cabchannellength+0.01,0.59,1]);
-			}
-		}
-	
-	//attachment tab:
-	tabwidth=0.24;
-	tablength=0.35;
-	difference() {
-		translate([floorlength-0.39-tablength,-tabwidth/2,0.0]) cube([tablength,tabwidth, floorthickness+0.01]);
-		translate([0.13, 0, -1]) cylinder(h=2, d=screwhole_0_80, $fn=90);
-	}
-	
-	//frame registration "wings":
-	//translate([0.38,0.133,-0.05]) cube([0.33, 0.037, 0.05]);
-	//translate([0.38,-0.17,-0.05]) cube([0.33, 0.037, 0.05]);
-	
-	//new members to accomodate new frame...
-	newframe();
-	
-	
-	/*	
-	translate([floorlength-cabchannellength,cabchannelwidth/2-floorthickness,-floorthickness]) 
-		cube([cabchannellength*0.3,floorthickness,,floorthickness]);
-		
-	translate([floorlength-cabchannellength,-(cabchannelwidth/2),-floorthickness]) 
-		cube([cabchannellength*0.3,floorthickness,,floorthickness]);
-	*/
-		
-	translate([0.74, cabchannelwidth/2, 0]) 
-		rotate([0,0,90]) 
-			cab_rear_support();
-	translate([0.75, -cabchannelwidth/2, 0]) 
-		rotate([0,0,-90]) 
-			cab_rear_support(false);
-}
 
 cab_floor($fn=90);
 

@@ -108,12 +108,12 @@ module cylinderchest() {
 	difference() {
 		cylinderchest1();
 		//translate([0.33/2-0.04/2,0,-0.001]) cylinder(h=2, d=screwhole_0_80, $fn=90);	//smokebox-cylinderchest-frame hole
-		translate([0.33/2,0,-0.001]) cylinder(h=2, d=screwhole_0_80, $fn=90);	//smokebox-cylinderchest-frame hole
+		//translate([0.33/2,0,-0.001]) cylinder(h=2, d=screwhole_0_80, $fn=90);	//smokebox-cylinderchest-frame hole
 		translate([0.33-tablength+0.001, -tabwidth/2, 0.1]) cube([tablength, tabwidth, tabthickness]);
 	}
 	
 	//adds the pilot truck pillar:
-	translate([0.33/2,0,-0.05]) hollow_cylinder(id=screwhole_0_80, od=screwhole_0_80*1.3, ht=0.05); //  cylinder(h=2, d=screwhole_0_80, $fn=90);	//smokebox-cylinderchest-frame hole
+	//translate([0.33/2,0,-0.05]) hollow_cylinder(id=screwhole_0_80, od=screwhole_0_80*1.3, ht=0.05); //  cylinder(h=2, d=screwhole_0_80, $fn=90);	//smokebox-cylinderchest-frame hole
 	
 	//use to visualize tab in slot:
 	//translate([0.3-tablength+0.001, -(tabwidth-tabslop)/2, 0.105]) cube([tablength, tabwidth-tabslop, tabthickness-tabslop]);
