@@ -20,4 +20,10 @@ clean:
 	rm -f *.stl
 
 dist:
-	tar -czvf DRG_168_STLs.tar.gz *.stl stl_integration.scad
+	mkdir DRG_168
+	cp ../lib/globals.scad DRG_168/.
+	cp *.stl DRG_168/.
+	cp stl_integration.scad DRG_168/.
+	sed -i 's/\.\.\/lib\///g' DRG_168/stl_integration.scad
+	tar -czvf DRG_168_STLs.tar.gz DRG_168
+	rm -rf DRG_168
