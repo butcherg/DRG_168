@@ -1,0 +1,257 @@
+<h1 id="utilities.scad">utilities.scad</h1>
+<p>A collection of re-usable variable, function, and module definitions used in the D&amp;RG #168 project.</p>
+<hr />
+<h2 id="functions">Functions</h2>
+<h3 id="addnumv-n">addnum(v, n)</h3>
+<p>Appends n to vector v. Used with path_extrude to make paths that have been rounded with polyRound():</p>
+<hr />
+<h2 id="common-definitions">Common Definitions</h2>
+<h3 id="screwhole_0_80116">screwhole_0_80=1/16;</h3>
+<hr />
+<h2 id="frame-modules">Frame Modules</h2>
+<h3 id="frame_channellength3width0.22height0.32thickness0.02">frame_channel(length=3,width=0.22,height=0.32,thickness=0.02)</h3>
+<p>renders a U-channel for frame construction</p>
+<ul>
+<li>length: x-axis length</li>
+<li>width: y-axis width</li>
+<li>height: z-axis height</li>
+<li>thickness: frame material thickness</li>
+</ul>
+<h3 id="frame_slotframewidth0.25-slot0.129-axle0.125-slotdepth0.0-detentdepth0.02">frame_slot(framewidth=0.25, slot=0.129, axle=0.125, slotdepth=0.0, detentdepth=0.02)</h3>
+<p>makes the object to subtract from a frame to make a driver slot</p>
+<ul>
+<li>framewidth</li>
+<li>slot: slot width</li>
+<li>axle: axle diameter</li>
+<li>slotdepth: distance into the frame to subtract</li>
+<li>detentdepth: makes a detent to hold driver in place, at the given depth in the slot</li>
+</ul>
+<hr />
+<h2 id="various-shapes">Various Shapes</h2>
+<h3 id="trapezoidbottomline-topline-toplineheight-toplineoffset-radius0">trapezoid(bottomline, topline, toplineheight, toplineoffset, radius=0)</h3>
+<p>Generates a trapezoid, optionally with rounded corners. The shape is 2D, across the x-y face.</p>
+<ul>
+<li>bottomline: length of the bottom paralell line, along the X axis</li>
+<li>topline: length of the top line parallel to the bottom line</li>
+<li>toplineheight: distance between the top and bottom lines</li>
+<li>toplineoffset: offseet of the top line from the Y axis</li>
+<li>radius(optional) if specified, the radius of the rounding of the trapezoid corners</li>
+</ul>
+<h3 id="wedgex-y-z">wedge(x, y, z)</h3>
+<p>Makes a wedge from a triangle defined by the x and z dimensions, extruded by the y dimension.</p>
+<ul>
+<li>x: x dimension</li>
+<li>y: y dimension</li>
+<li>z: z dimension</li>
+</ul>
+<h3 id="wedge_anglez-y-angle">wedge_angle(z, y, angle)</h3>
+<p>Makes a wedge where z is the fixed edge of the face, and the angle determines the x dimension. The triangle is extruded in the y direction.</p>
+<ul>
+<li>z: height of the wedge</li>
+<li>y: extruded depth of the wedge</li>
+<li>angle: angle of the triangle at the top of the z dimension</li>
+</ul>
+<h3 id="trianglexyz">triangle(x,y,z)</h3>
+<p>Makes a triangle across the x-z face, extruded in the y direction</p>
+<ul>
+<li>x: x dimension</li>
+<li>y: y dimension</li>
+<li>z: z dimension</li>
+</ul>
+<h3 id="pie_sliceang30-l1-r1-spin0">pie_slice(ang=30, l=1, r=1, spin=0)</h3>
+<p>makes a pie slice shape</p>
+<ul>
+<li>ang: angle of the slice</li>
+<li>l:</li>
+<li>r: radius of the slice</li>
+<li>spin: rotate the slice number of degrees</li>
+</ul>
+<h3 id="roundedboxsize111-radius0.3-centeredfalse">roundedbox(size=[1,1,1], radius=0.3, centered=false)</h3>
+<p>Makes a box with rounded vertical corners</p>
+<ul>
+<li>size: size of box as a vector, [x,y,z]</li>
+<li>radius: radius of the box corners</li>
+<li>centered: if true, center box on origin; default=false</li>
+</ul>
+<h3 id="roundedrectsize-radius-centerfalse">roundedRect(size, radius, center=false)</h3>
+<p>Makes a box rounded on all edges</p>
+<ul>
+<li>size: size of box as a vector, [x,y,z]</li>
+<li>radius: radius of the corners</li>
+<li>center: if true, center box on origin, default=false</li>
+</ul>
+<h3 id="rope_rectanglel10-w0.5-d0.05-f30">rope_rectangle(l=10, w=0.5, d=0.05, f=30)</h3>
+<p>Makes a “rope rectangle”, useful for footboard edges. The length goes to the y-axis.</p>
+<ul>
+<li>l: length</li>
+<li>w: width</li>
+<li>d: rope diameter</li>
+<li>f: controls the definition of the rope, decrease from default for debugging</li>
+</ul>
+<h3 id="hollow_cylinderod0.6-id0.55-ht0.5">hollow_cylinder(od=0.6, id=0.55, ht=0.5)</h3>
+<p>Makes a hollow cylinder</p>
+<ul>
+<li>od: outer diameter</li>
+<li>id: inner diameter</li>
+<li>ht: height</li>
+</ul>
+<h3 id="halfspherer">halfsphere(r)</h3>
+<p>Makes a half sphere</p>
+<ul>
+<li>r: radius of the sphere</li>
+</ul>
+<hr />
+<h2 id="rivet-modules">Rivet Modules</h2>
+<h3 id="pyramid-rivet-globals">pyramid rivet globals</h3>
+<ul>
+<li>rivet_height: 0.01;</li>
+<li>rivet_diameter: 0.02;</li>
+<li>rivet_top: 0.005;</li>
+</ul>
+<h3 id="rivet_cylinderdiameter0.2-start_deg0-end_deg90-spacing_deg10">rivet_cylinder(diameter=0.2, start_deg=0, end_deg=90, spacing_deg=10)</h3>
+<p>Makes a cylinder of pyramid rivets</p>
+<ul>
+<li>diameter: cylinder diameter</li>
+<li>start_deg: where rivets start on the cylinder</li>
+<li>end_deg: where rivets end on the cylinder</li>
+<li>spacing_deg: rivet spacing in degrees</li>
+</ul>
+<h3 id="rivet_cylinder_roundeddiameter0.5-start_deg0-end_deg90-rivet_diameter0.05-spacing_deg10">rivet_cylinder_rounded(diameter=0.5, start_deg=0, end_deg=90, rivet_diameter=0.05, spacing_deg=10)</h3>
+<p>Makes a cylinder of rounded rivets</p>
+<ul>
+<li>diameter: cylinder diameter</li>
+<li>start_deg: where rivets start on the cylinder</li>
+<li>end_deg: where rivets end on the cylinder</li>
+<li>rivet_diameter: rivet diameter</li>
+<li>spacing_deg: rivet spacing in degrees</li>
+</ul>
+<h3 id="rivet_corner_roundeddiameter0.5-start_deg0-end_deg90-rivet_diameter0.05-spacing_deg10">rivet_corner_rounded(diameter=0.5, start_deg=0, end_deg=90, rivet_diameter=0.05, spacing_deg=10)</h3>
+<p>Makes a corner of rounded rivets</p>
+<ul>
+<li>diameter: corner diameter</li>
+<li>start_deg: where rivets start on the corner</li>
+<li>end_deg: where rivets end on the corner</li>
+<li>rivet_diameter: rivet diameter</li>
+<li>spacing_deg: rivet spacing in degrees</li>
+</ul>
+<h3 id="rivet_circlediameter0.2-start_deg0-end_deg90-rivet_diameter0.05-spacing_deg10">rivet_circle(diameter=0.2, start_deg=0, end_deg=90, rivet_diameter=0.05, spacing_deg=10)</h3>
+<p>Makes a circle of pyramid rivets</p>
+<ul>
+<li>diameter: circle diameter</li>
+<li>start_deg: where rivets start on the circle</li>
+<li>end_deg: where rivets end on the circle</li>
+<li>rivet_diameter: rivet diameter</li>
+<li>spacing_deg: rivet spacing in degrees</li>
+</ul>
+<h3 id="rivet_coursestart_x-0-end_x1-spacing0.1">rivet_course(start_x= 0, end_x=1, spacing=0.1)</h3>
+<p>Makes a straight course of pyramid rivets</p>
+<ul>
+<li>start_x: starting point on x axis of course</li>
+<li>end_x: ending point on x axis of course</li>
+<li>spacing: rivet spacing</li>
+</ul>
+<h3 id="rivet_course_roundedstart_x-0-end_x1-rivet_diameter-0.05-spacing0.1">rivet_course_rounded(start_x= 0, end_x=1, rivet_diameter = 0.05, spacing=0.1)</h3>
+<p>Makes a straight course of rounded rivets</p>
+<ul>
+<li>start_x: starting point on x axis of course</li>
+<li>end_x: ending point on x axis of course</li>
+<li>rivet_diameter: diameter of rivet</li>
+<li>spacing: rivet spacing</li>
+</ul>
+<h3 id="rivet_circle_roundeddiameter0.2-start_deg0-end_deg90-rivet_diameter0.05-spacing_deg10">rivet_circle_rounded(diameter=0.2, start_deg=0, end_deg=90, rivet_diameter=0.05, spacing_deg=10)</h3>
+<p>Makes a circle of rounded rivets</p>
+<ul>
+<li>diameter: circle diameter</li>
+<li>start_deg: where rivets start on the circle</li>
+<li>end_deg: where rivets end on the circle</li>
+<li>rivet_diameter: rivet diameter</li>
+<li>spacing_deg: rivet spacing in degrees</li>
+</ul>
+<hr />
+<h2 id="various-parts">Various Parts</h2>
+<h3 id="stanchionheight0.05-base0.03-ball0.04-hole0.025">stanchion(height=0.05, base=0.03, ball=0.04, hole=0.025)</h3>
+<p>Makes a generic handrail stanchion with hole to thread wire through</p>
+<ul>
+<li>height: stanchion height</li>
+<li>base: stanchion base diameter</li>
+<li>ball: ball diameter</li>
+<li>hole: railing hole diameter</li>
+</ul>
+<h3 id="snifter_valve">snifter_valve()</h3>
+<p>Makes a HO scale snifter valve, goes on the cylinder chest. Probably specific to the T-12s</p>
+<p>(no parameters)</p>
+<h3 id="nutretainer_0_80d5322">nutretainer_0_80(d=(5/32)*2)</h3>
+<p>makes a disk with a hex cutout to accommodate a 0-80 nut</p>
+<ul>
+<li>d: diameter, keep the default definition for a 0-80 nut</li>
+</ul>
+<hr />
+<h2 id="footboard-modules">Footboard Modules</h2>
+<h3 id="catwalksize1-1-1-radius0.05-deprecated">catwalk(size=[1, 1, 1], radius=0.05) (DEPRECATED)</h3>
+<ul>
+<li>size: dimensions in a vector, [x,y,z]</li>
+<li>radius: radius of the corners</li>
+</ul>
+<h3 id="footboardl1-w0.25-h0.03-r0.01-s0.03-t0">footboard(l=1, w=0.25, h=0.03, r=0.01, s=0.03, t=0)</h3>
+<ul>
+<li>l: length</li>
+<li>w: width</li>
+<li>h: height</li>
+<li>r: corner radius</li>
+<li>s: dimple spacing</li>
+<li>t: dimple resolution</li>
+</ul>
+<hr />
+<h2 id="boiler-modules">Boiler Modules</h2>
+<h3 id="boilercoursediameter-length-thickness">boilercourse(diameter, length, thickness)</h3>
+<ul>
+<li>diameter</li>
+<li>length</li>
+<li>thickness</li>
+</ul>
+<h3 id="taperedcoursediameter1-diameter2-length-thickness">taperedcourse(diameter1, diameter2, length, thickness)</h3>
+<ul>
+<li>diameter1</li>
+<li>diameter2</li>
+<li>length</li>
+<li>thickness</li>
+</ul>
+<hr />
+<h2 id="cab-modules">Cab Modules</h2>
+<h3 id="cab_roofarc90-radius30-length20-thickness1">cab_roof(arc=90, radius=30, length=20, thickness=1)</h3>
+<ul>
+<li>arc: extent of the roof arc</li>
+<li>radius: radius of the roof arc</li>
+<li>length: x-length of roof</li>
+<li>thickness: thickness of the roof material</li>
+</ul>
+<hr />
+<h2 id="sidrod-modules">Sidrod Modules</h2>
+<h3 id="rodlength-width-height">rod(length, width, height)</h3>
+<p>Convenience routine to make a rod oriented to the x axis</p>
+<ul>
+<li>length</li>
+<li>width</li>
+<li>height</li>
+</ul>
+<h3 id="crankpin_holebearing_hole-rod_width">crankpin_hole(bearing_hole, rod_width)</h3>
+<p>Makes a cylinder for differenceing a crankpin hole</p>
+<ul>
+<li>bearing_hole: diameter of hole</li>
+<li>rod_width: width of rod</li>
+</ul>
+<h3 id="bearing_lubricatordiameter-height">bearing_lubricator(diameter, height)</h3>
+<ul>
+<li>diameter</li>
+<li>height</li>
+</ul>
+<hr />
+<h2 id="truck-modules">Truck Modules</h2>
+<h3 id="truck_bolsterwidth-height-thick-pad-padheight">truck_bolster(width, height, thick, pad, padheight)</h3>
+<ul>
+<li>width: sill-to-sill</li>
+<li>height: vertical height</li>
+<li>thick: front-to-back</li>
+<li>pad: truck mount pad width at bolster center</li>
+<li>padheight: pad distance from bolster bottom, makes tapered edges</li>
+</ul>
