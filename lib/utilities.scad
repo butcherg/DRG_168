@@ -458,7 +458,8 @@ module footboard(l=1, w=0.25, h=0.03, r=0.01, s=0.03, t=0) {
 		}
 	//}
 }
-
+ 
+//# boiler routinesre
 
 module boilercourse(diameter, length, thickness)
 {
@@ -478,6 +479,8 @@ module taperedcourse(diameter1, diameter2, length, thickness)
 	}
 }
 
+//# cab routines
+
 module cab_roof(arc=90, radius=30, length=20, thickness=1) {
 	translate([length,0,-radius]) rotate([0,-90,0]) {
 		difference() {
@@ -489,21 +492,62 @@ module cab_roof(arc=90, radius=30, length=20, thickness=1) {
 	}
 }
 
-//sidrod utilities:
+//# sidrod routines
 
+//## rod
+//- length
+//- width
+//- height
+//
 module rod(length, width, height) {
 	translate([0,-width/2, -height/2]) cube([length, width, height]);
 }
 
+//## crankpin_hole
+//Makes a cylinder for differenceing a crankpin hole
+//- bearing_hole: diameter of hole
+//= rod_width: width of rod
 module crankpin_hole(bearing_hole, rod_width) {
 	translate([0,rod_width,0])
 	rotate([90,0,0])
 	cylinder(d=bearing_hole, h=rod_width*2);
 }
 
+//## bearing_lubricator
+//- diameter
+//- height
 module bearing_lubricator(diameter, height) {
 	cylinder(d=diameter, h=height);
 	cylinder(d=diameter*0.9, h=height*1.1, $fn=6);
 	cylinder(d=diameter*0.6, h=height*1.2);
 }
+
+//# truck routines
+
+//## truck_bolster
+//- width: sill-to-sill
+//- height: vertical height
+//- thick: front-to-back
+//- pad: truck mount pad width at bolster center
+//- padheight: pad distance from bolster bottom, makes tapered edges
+//
+module truck_bolster(width, height, thick, pad, padheight) {
+	bolster_pts = [
+		[0, padheight],
+		[0, height+padheight],
+		[width, height+padheight],
+		[width, padheight],
+		[width/2+pad/2, 0],
+		[width/2-pad/2, 0],
+		[0, padheight]
+	];
+	
+	rotate([0,-90,0])
+		rotate([0,0,-90])
+			translate([-width/2,-(height+padheight)/2,-thick/2])
+				linear_extrude(thick) polygon(bolster_pts);
+}
+
+
+truck_bolster(10,1,1,2,0.5);
 
