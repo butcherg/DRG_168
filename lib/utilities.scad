@@ -504,9 +504,12 @@ module rod(length, width, height) {
 }
 
 //## crankpin_hole
+//
 //Makes a cylinder for differenceing a crankpin hole
+//
 //- bearing_hole: diameter of hole
 //= rod_width: width of rod
+//
 module crankpin_hole(bearing_hole, rod_width) {
 	translate([0,rod_width,0])
 	rotate([90,0,0])
@@ -514,8 +517,10 @@ module crankpin_hole(bearing_hole, rod_width) {
 }
 
 //## bearing_lubricator
+//
 //- diameter
 //- height
+//
 module bearing_lubricator(diameter, height) {
 	cylinder(d=diameter, h=height);
 	cylinder(d=diameter*0.9, h=height*1.1, $fn=6);
@@ -525,6 +530,7 @@ module bearing_lubricator(diameter, height) {
 //# truck routines
 
 //## truck_bolster
+//
 //- width: sill-to-sill
 //- height: vertical height
 //- thick: front-to-back
