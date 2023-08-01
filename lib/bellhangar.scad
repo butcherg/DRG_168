@@ -45,7 +45,7 @@ module lever() {
 	//path_extrude(exPath=lever_path_pts, exShape=cradle_profile_pts);
 	path_extrude(exPath=lever_path_pts, exShape=profile_pts);
 	difference() {
-		translate([0.0165,0.055,-bhx/2]) rotate([0,90,0]) cylinder(d=bhx, h=bhy/2);
+		translate([0.0169,0.055,-bhx/2]) rotate([0,90,0]) cylinder(d=bhx, h=bhy/2+0.001);
 		translate([0,0.055,-bhx/2]) rotate([0,90,0]) cylinder(d=0.01, h=0.04);
 	}
 }
