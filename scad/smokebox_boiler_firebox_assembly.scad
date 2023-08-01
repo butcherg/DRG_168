@@ -11,6 +11,10 @@ include <../lib/globals.scad>
 
 use <footboards.scad>
 
+//for placement dimples :
+//use <compressor.scad>
+//use <generator.scad>
+
 module smokebox_boiler_firebox(decor=true) {
 	translate(-smokebox_boiler_firebox_position) {
 		difference () {
@@ -19,8 +23,30 @@ module smokebox_boiler_firebox(decor=true) {
 		}
 		translate([front_screw_hole,0,0.325]) nutretainer_0_80(d=0.21);
 	}
+	
 	translate([0.6,0,0]) boiler(decor);
-	translate([1.48,0,0]) firebox(decor);
+
+	difference() { //placement dimples
+		translate([1.48,0,0]) firebox(decor);
+		//compressor dimples, top:
+		translate([1.672,0,0.65/2])
+			rotate([62.5,0,0])
+				translate([0,-0.03/2,0.65/2-0.005]) 
+					cube([0.035,0.03,0.5]);
+		translate([1.797,0,0.65/2])
+			rotate([62.6,0,0])
+				translate([0,-0.03/2,0.65/2-0.005]) 
+					cube([0.035,0.03,0.5]);
+		//generator dimples, front:
+		translate([2.37,0,0.65/2])
+			rotate([-19,0,0])
+				translate([0,-0.03/2,0.65/2-0.005]) 
+					cube([0.035,0.03,0.5]);
+		translate([2.37,0,0.65/2])
+			rotate([19,0,0])
+				translate([0,-0.03/2,0.65/2-0.005]) 
+					cube([0.035,0.03,0.5]);
+	}
 }
 
 module smokebox_boiler_firebox_assembly() {
@@ -33,5 +59,8 @@ module smokebox_boiler_firebox_assembly() {
 
 $fn =  $preview ? 90 : 180;
 
-scale(25.4) 
+scale(25.4) { 
 	smokebox_boiler_firebox_assembly();
+	//translate(compressor_position-smokebox_boiler_firebox_position)rotate([0,0,90])compressor();
+	//translate(generator_position-smokebox_boiler_firebox_position)generator();
+}
