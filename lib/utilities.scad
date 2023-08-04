@@ -648,7 +648,8 @@ module footboard(l=1, w=0.25, h=0.03, r=0.01, s=0.03, t=0) {
 	translate([0,0,r*2]) rope_rectangle(l=w, w=l, d=r*2);
 	
 	//floor:
-	translate([r/2, r/2, r*0.1]) roundedbox([l-r,w-r,h/2],r);
+	//translate([r/2, r/2, r*0.1]) roundedbox([l-r,w-r,h/2],r); //roundedbox introduces render problems in footboards.scad
+	translate([r/2, r/2, r*0.1]) cube([l-r*1.8,w-r*1.8,h/2]);
 	
 	//if (tread > 0) {
 		//rows of tread dots:
