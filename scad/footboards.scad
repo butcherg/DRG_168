@@ -17,7 +17,7 @@ module footboards() {
 
 	//port (around compressor):
 	translate([2.08, -0.515, 0.52]) footboard(0.72, 0.2, 0.02, r, s, t);
-	translate([0.75, -0.515, 0.52]) footboard(1.17, 0.2, 0.02, r, s, t);
+	translate([0.75, -0.515, 0.52]) footboard(1.15, 0.2, 0.02, r, s, t);
 	
 
 	difference() {
