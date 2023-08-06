@@ -161,6 +161,6 @@ scale(25.4)
 	translate(-cab_position)
 	difference () {
 		translate(cab_position) cab($fn=90);
-		translate([rear_screw_hole,0,0]) cylinder(h=2, d=screwhole_0_80, $fn=90);
+		translate([rear_screw_hole,0,0]) cylinder(h=1, d=screwhole_0_80, $fn=90);
 		
 	}
