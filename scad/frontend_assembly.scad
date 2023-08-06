@@ -16,7 +16,7 @@ module frontend_assembly() {
 
 	}
 	translate([-0.365,0,-0.11-0.05]) pilot();
-	translate([1.3,0,-0.16]) crossheadguide_hangar();
+	translate([1.3-0.05,0,-0.16]) crossheadguide_hangar();
 }
 
 $fn =  $preview ? 90 : 180;

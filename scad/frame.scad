@@ -1,7 +1,9 @@
 include <../lib/utilities.scad>
 include <../lib/globals.scad>
 
-framelength=3.59-0.75-0.34;
+adjustment20230705 = 0.075;
+
+framelength=2.5-adjustment20230705;
 framewidth=0.25;  //0.25 to accomodate the firebox overhangs, would prefer 0.29 but oh well...
 frameheight=0.27;
 framethickness=0.06;
@@ -19,9 +21,9 @@ module driverslot(framewidth=0.25, slot=0.129, axle=0.125, slotdepth=0.0, detent
 
 module driver_slots() {
 	//-0.75 is to accommodate the new frame position...
-	front=1.54-0.75;
-	main=2.14-0.75; //2.13...
-	rear=3.12-0.75;
+	front=0.79-adjustment20230705;
+	main=1.39-adjustment20230705;
+	rear=2.37-adjustment20230705;
 	slot=0.129;
 	axle=0.129; //axle retention detent...
 	slotdepth=0.02;
@@ -37,21 +39,21 @@ module driver_slots() {
 
 module frame_voids() {
 	//valvegear hangar mounting slot:
-	translate([0.54, -0.35, 0.19]) cube([0.02, 1, 0.1]);
+	translate([0.54-adjustment20230705, -0.35, 0.19]) cube([0.02, 1, 0.1]);
 	
 	//frame voids:
-	translate([1.53,0,0.06]) 
+	translate([1.53-adjustment20230705,0,0.06]) 
 		wedge(0.7, 0.7, 0.14);
 	
 	//cutout for proper firebox:
-	translate([1.53,0,0.23]) 
+	translate([1.53-adjustment20230705,0,0.23]) 
 		rotate([-180,0,0])
 			wedge_angle(0.12, 0.7, 11);
-	translate([1.53,-0.7/2,0.229])
+	translate([1.53-adjustment20230705,-0.7/2,0.229])
 		cube([0.615,0.7,0.14]);
 	
-	translate([0.92,-.15,.059]) cube([.33,.6,.13]);
-	translate([-0.001, -0.5, -0.001]) cube([0.66, 1, 0.12]);
+	translate([0.92-adjustment20230705,-.15,.059]) cube([.33,.6,.13]);
+	translate([-0.001-adjustment20230705, -0.5, -0.001]) cube([0.66, 1, 0.12]);
 	
 	//propulsion cutout:
 	//translate([0.55,framethickness,0]) cube([0.5, framewidth-framethickness*2, 0.5]); //front driver
@@ -87,12 +89,12 @@ module frame(tab=true) {
 	blockoffset=0.029;
 	blockthickness=0.03;
 	difference() {
-		translate([0.985,-framewidth/2,blockoffset]) cube([0.2, framewidth, blockthickness]);
-		translate([1.085, 0, 0]) cylinder(h=2, d=screwhole_0_80, $fn=90);
+		translate([0.985-adjustment20230705,-framewidth/2,blockoffset]) cube([0.2, framewidth, blockthickness]);
+		translate([1.085-adjustment20230705, 0, 0]) cylinder(h=2, d=screwhole_0_80, $fn=90);
 	}
 	difference() {
-		translate([1.885,-framewidth/2,blockoffset]) cube([0.2, framewidth, blockthickness]);
-		translate([1.985, 0, 0]) cylinder(h=2, d=screwhole_0_80, $fn=90);
+		translate([1.885-adjustment20230705,-framewidth/2,blockoffset]) cube([0.2, framewidth, blockthickness]);
+		translate([1.985-adjustment20230705, 0, 0]) cylinder(h=2, d=screwhole_0_80, $fn=90);
 	}		
 }
 

@@ -1,6 +1,8 @@
 use <utilities.scad> //for roundedbox()
 //use <../Rods/crosshead.scad>
 
+include <globals.scad>
+
 
 //includes crosshead guides, need to experiment with resins for mechanical viability...
 
@@ -15,7 +17,7 @@ module crossheadguide_hangar()
 	d=0.05; 	 //the width of the hangar body:
 	
 	//crosshead guide parameters:
-	hlen=0.5;  //0.5 is long, to allow hangar positioning; shorten after position is determined...
+	hlen=0.5-0.05;  //0.5 is long, to allow hangar positioning; shorten after position is determined...
 	cylctr=0.68;
 
 	translate([t,-w/2,0]) 

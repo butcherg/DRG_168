@@ -26,7 +26,7 @@ include <../lib/globals.scad>
 //translate(port_siderod_position*25.4) import("siderod.stl");
 //translate(starboard_siderod_position*25.4) import("siderod.stl");
 //translate(port_connecting_rod_position*25.4) import("connecting_rod.stl");
-//translate(starboard_connecting_rod_position*25.4) rotate([0,5.7,0]) import("connecting_rod.stl");
+//translate(starboard_connecting_rod_position*25.4) rotate([0,4.3,0]) import("connecting_rod.stl");
 
 //translate(cistern_position*25.4) import("cistern.stl");
 //translate(tender_frame_position*25.4) import("tender_frame.stl");
