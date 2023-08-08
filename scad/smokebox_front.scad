@@ -48,8 +48,12 @@ module smokebox_front()
 	rotate([0,-90,0]) {
 		//smokebox face:
 		//color("#cccccc") 
-		rotate_extrude()
-			polygon(polyRound(168_front));
+		difference() {
+			rotate_extrude()
+				polygon(polyRound(168_front));
+			translate([0, 0, -0.03])
+				cylinder(d=0.032, h=0.1);
+		}
 		
 		//alignment flange:
 		rotate([0, 90, 0]) {
