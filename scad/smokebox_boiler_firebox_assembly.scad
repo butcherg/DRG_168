@@ -47,6 +47,32 @@ module smokebox_boiler_firebox(decor=true) {
 				translate([0,-0.03/2,0.65/2-0.005]) 
 					cube([0.035,0.03,0.5]);
 	}
+	
+	//handrail stanchions:
+	smokebox_diameter = 0.61;
+	firebox_diameter = 0.65;
+	stanchion_forward_offset = 39; //degrees off top center\
+	stanchion_rear_offset = 41; //degrees off top center\
+	stanchion_forward_station = 0.23;
+	stanchion_rear_station = 1.65;
+	stanchion_forward_height = 0.087;
+	translate([stanchion_forward_station,0,smokebox_diameter/2]) 
+		rotate([stanchion_forward_offset,0,0]) 
+			translate([0,0,smokebox_diameter/2]) 
+				stanchion(height=stanchion_forward_height);
+	translate([stanchion_forward_station,0,smokebox_diameter/2]) 
+		rotate([-stanchion_forward_offset,0,0]) 
+			translate([0,0,smokebox_diameter/2]) 
+				stanchion(height=stanchion_forward_height);
+	translate([stanchion_rear_station,0,firebox_diameter/2]) 
+		rotate([-stanchion_rear_offset,0,0]) 
+			translate([0,0,firebox_diameter/2]) 
+				stanchion();
+	translate([stanchion_rear_station,0,firebox_diameter/2]) 
+		rotate([stanchion_rear_offset,0,0]) 
+			translate([0,0,firebox_diameter/2]) 
+				stanchion();
+	
 }
 
 module smokebox_boiler_firebox_assembly() {
