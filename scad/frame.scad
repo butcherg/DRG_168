@@ -1,8 +1,6 @@
 include <../lib/utilities.scad>
 include <../lib/globals.scad>
 
-adjustment20230705 = 0.075;
-
 framelength=2.5-adjustment20230705;
 framewidth=0.25;  //0.25 to accomodate the firebox overhangs, would prefer 0.29 but oh well...
 frameheight=0.27;
