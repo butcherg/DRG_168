@@ -26,25 +26,26 @@ module smokebox_boiler_firebox(decor=true) {
 	
 	translate([0.6,0,0]) boiler(decor);
 
+	dimpledepth=0.007;
 	difference() { //placement dimples
 		translate([1.48,0,0]) firebox(decor);
 		//compressor dimples, top:
 		translate([1.672,0,0.65/2])
 			rotate([62.5,0,0])
-				translate([0,-0.03/2,0.65/2-0.005]) 
+				translate([0,-0.03/2,0.65/2-dimpledepth]) 
 					cube([0.035,0.03,0.5]);
 		translate([1.797,0,0.65/2])
 			rotate([62.6,0,0])
-				translate([0,-0.03/2,0.65/2-0.005]) 
+				translate([0,-0.03/2,0.65/2-dimpledepth]) 
 					cube([0.035,0.03,0.5]);
 		//generator dimples, front:
 		translate([2.37,0,0.65/2])
 			rotate([-19,0,0])
-				translate([0,-0.03/2,0.65/2-0.005]) 
+				translate([0,-0.03/2,0.65/2-dimpledepth]) 
 					cube([0.035,0.03,0.5]);
 		translate([2.37,0,0.65/2])
 			rotate([19,0,0])
-				translate([0,-0.03/2,0.65/2-0.005]) 
+				translate([0,-0.03/2,0.65/2-dimpledepth]) 
 					cube([0.035,0.03,0.5]);
 	}
 	
