@@ -83,7 +83,15 @@ module smokebox_front()
 	
 		}
 	
-	
+		//handrail stanchions:
+		rotate([0,0,42])
+			translate([0.285,0,0.014])
+				rotate([0,0,90])
+					stanchion();
+		rotate([0,0,-42])
+			translate([0.285,0,0.014])
+				rotate([0,0,90])
+					stanchion();
 	}
 	smokebox_hinge_assy();
 }
