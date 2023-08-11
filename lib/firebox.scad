@@ -73,11 +73,11 @@ module firebox_sides(decor=true) {
 
 module furnace_bearer() {
 	l=0.06;
-	cylinder(d=0.03, h=0.01);
-	cylinder(d=0.01, h=0.015);
-	translate([l,0,0]) cylinder(d=0.03, h=0.01);
-	translate([l,0,0]) cylinder(d=0.01, h=0.015);
-	translate([0, -0.005,0]) cube([l, 0.01, 0.01]);
+	cylinder(d=0.035, h=0.01);
+	cylinder(d=0.015, h=0.017);
+	translate([l,0,0]) cylinder(d=0.035, h=0.01);
+	translate([l,0,0]) cylinder(d=0.015, h=0.017);
+	translate([0, -0.01,0]) cube([l, 0.02, 0.01]);
 }
 
 module firebox_pan() {
@@ -94,6 +94,15 @@ module firebox_pan() {
 		translate([-pan_length/2+thick, -(pan_width-thick*2)/2,0])
 			roundedbox([pan_length*2,pan_width-thick*2,1],0.02, $fn=90);
 	}
+	
+	//firebox floor:
+	translate([0,0,0.142]) 
+		rotate([0,-pan_angle,0]) 
+			cube([pan_length, pan_width-thick,thick], center=true);
+
+	//firebox back: (commented out, resin drainage...
+	//translate([0.2949,0,0.245])
+	//	cube([thick,pan_width-thick*2, 0.11], center=true);
 	
 	//rivets:
 	//port front corner
