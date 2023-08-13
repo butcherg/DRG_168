@@ -40,7 +40,7 @@ firebox_backhead_position = [2.291-adjustment20230705, 0, 0.646];
 
 port_crosshead_position = [0.375-adjustment20230705, -0.34, -0.025];
 starboard_crosshead_position = [0.293-adjustment20230705, 0.34, -0.025];
-port_siderod_position = [0.085-adjustment20230705, -0.285, 0.085];
+port_siderod_position = [0.092-adjustment20230705, -0.285, 0.089];
 starboard_siderod_position = [0.0-adjustment20230705, 0.285, 0.0];
 port_connecting_rod_position = [0.465+1.01-adjustment20230705, -0.34, 0.085];
 starboard_connecting_rod_position = [0.38+1.01-adjustment20230705, 0.34, 0.0];

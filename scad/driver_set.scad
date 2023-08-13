@@ -68,6 +68,9 @@ module driver_set() {
 	translate([0,-gauge/2+T,0]) rotate([90,20,0]) driver();
 	translate([0,gauge/2-T,0]) rotate([-90,75,0]) driver();
 	rotate([90,0,0]) translate([0,0,-(gauge+W*2)/2])cylinder(d=1/8,h=gauge+W*2);
+	
+	translate([0.091,-0.26,0]) rotate([90,0,0]) cylinder(d=0.03, h=0.12);
+	translate([0,0.26,-0.091]) rotate([-90,0,0]) cylinder(d=0.03, h=0.12);
 }
 
 $fn =  $preview ? 90 : 180;

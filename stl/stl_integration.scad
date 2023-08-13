@@ -17,16 +17,16 @@ include <../lib/globals.scad>
 //translate(cab_position*25.4) import("cab.stl");
 //translate(firebox_backhead_position*25.4)  import("firebox_backhead.stl");
 
-//translate([front_driver,0,0.09]*25.4) import("driver_set.stl");
-//translate([main_driver,0,0.09]*25.4) import("driver_set.stl");
-//translate([rear_driver,0,0.09]*25.4) import("driver_set.stl");
+translate([front_driver,0,0.09]*25.4) import("driver_set.stl");
+translate([main_driver,0,0.09]*25.4) import("driver_set.stl");
+translate([rear_driver,0,0.09]*25.4) import("driver_set.stl");
 
-//translate(port_crosshead_position*25.4) import("crosshead.stl");
-//translate(starboard_crosshead_position*25.4) import("crosshead.stl");
-//translate(port_siderod_position*25.4) import("siderod.stl");
-//translate(starboard_siderod_position*25.4) import("siderod.stl");
-//translate(port_connecting_rod_position*25.4) import("connecting_rod.stl");
-//translate(starboard_connecting_rod_position*25.4) rotate([0,4.3,0]) import("connecting_rod.stl");
+translate(port_crosshead_position*25.4) import("crosshead.stl");
+translate(starboard_crosshead_position*25.4) import("crosshead.stl");
+translate(port_siderod_position*25.4) import("siderod.stl");
+translate(starboard_siderod_position*25.4) import("siderod.stl");
+translate(port_connecting_rod_position*25.4) rotate([0,-0.5,0]) import("connecting_rod.stl");
+translate(starboard_connecting_rod_position*25.4) rotate([0,4.2,0]) import("connecting_rod.stl");
 
 //translate(cistern_position*25.4) import("cistern.stl");
 //translate(tender_frame_position*25.4) import("tender_frame.stl");
