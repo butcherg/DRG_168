@@ -1,5 +1,5 @@
 
-OPENSCAD=/home/glenn/3DPrinting/openscad/build-release/openscad --enable=manifold --enable=lazy-union
+OPENSCAD="/c/Program Files/OpenSCAD/openscad.exe" --enable=manifold --enable=lazy-union
 
 SRC  := ../scad
 OBJ  := .
