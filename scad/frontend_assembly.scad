@@ -1,5 +1,5 @@
 use <../lib/frontend.scad>
-use <../lib/168_pilot.scad>
+//use <../lib/168_pilot.scad>
 use <../lib/crossheadguide_hangar.scad>
 include <../lib/utilities.scad>
 include <../lib/globals.scad>
