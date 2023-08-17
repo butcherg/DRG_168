@@ -3,6 +3,13 @@ include <../lib/globals.scad>
 
 //import("frame.stl");
 
+//brass frame spine:
+difference() {
+	translate([-0.25,-1/8,0.27-1/16]*25.4) cube([2.425+0.25,1/4,1/16]*25.4);
+	translate([front_screw_hole*25.4,0,0]) cylinder(d=0.125*25.4, h=1*25.4, $fn=90);
+	translate([rear_screw_hole*25.4,0,0]) cylinder(d=0.125*25.4, h=1*25.4, $fn=90);
+}
+
 //translate(frontend_assembly_position*25.4) import("frontend_assembly.stl");
 
 //translate(smokebox_boiler_firebox_position*25.4) import("smokebox_boiler_firebox_assembly.stl");
