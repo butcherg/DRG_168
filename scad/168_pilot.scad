@@ -1,5 +1,5 @@
-use <utilities.scad>
-use <Round-Anything/polyround.scad>
+use <../lib/utilities.scad>
+use <../lib/Round-Anything/polyround.scad>
 //use <frontend.scad>
 //use <../CylinderChest/crossheadguide_hangar.scad>
 
