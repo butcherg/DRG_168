@@ -88,16 +88,24 @@ module cab_side() {
 
 module cabshell() {
 	
+	port_handrail_position = [0.01,-0.243,0.408];
+	starboard_handrail_position = [0.01,0.253,0.408];
+	port_handrail_penetration = [0.04,-0.243,0.408];
+	starboard_handrail_penetration = [0.04,0.253,0.408];
 	//front wall:
 	difference() {
 		union() {
 			rotate([0,0,90]) translate([-0.50,0,0]) rotate([ 90,0,0]) linear_extrude(.03) polygon(polyRound(front_pts1));
+
+			//cab penetration grommets
+			translate(starboard_handrail_position) rotate([0,-90,0]) cylinder(d=0.04, h=0.02);
+			translate(port_handrail_position) rotate([0,-90,0]) cylinder(d=0.04, h=0.02);
 			
 		}
 		union () {
 			//front doors:
 			//translate([-0.25,-0.47,0.08]) cube([1,0.12,0.53]);
-			//translate([-0.25,0.37,0.08]) cube([1,0.12,0.53]);
+			//translate([-0.25,0.375,0.08]) cube([1,0.12,0.53]);
 			
 			difference() { //left front door outline
 				translate([-0.0001,-0.47,0.08]) cube([0.02,0.12,0.53]);
@@ -123,6 +131,10 @@ module cabshell() {
 			//firebox opening:
 			translate([-0.001,0,0.16]) rotate([0,90,0]) cylinder(d=0.65, h=1);
 			cube([1, 0.65, 0.4], center=true);
+			
+			//cab penetration holes:
+			translate(starboard_handrail_penetration) rotate([0,-90,0]) cylinder(d=0.02, h=0.08);
+			translate(port_handrail_penetration) rotate([0,-90,0]) cylinder(d=0.02, h=0.08);
 		}
 	}
 		
