@@ -39,3 +39,9 @@ difference() {
 //translate(tender_frame_position*25.4) import("tender_frame.stl");
 //translate([3.2,0,-0.1]*25.4) import("tender_truck.stl");
 //translate([4.9,0,-0.1]*25.4) import("tender_truck.stl");
+
+//positioning aids:
+
+//handrails:
+translate([-0.4,0.248,0.905]*25.4) rotate([0,90,0]) cylinder(d=0.02*25.4, h=2.48*25.4, $fn=90);
+translate([-0.4,-0.248,0.905]*25.4) rotate([0,90,0]) cylinder(d=0.02*25.4, h=2.48*25.4, $fn=90);

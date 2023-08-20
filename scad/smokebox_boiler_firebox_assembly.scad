@@ -93,7 +93,4 @@ scale(25.4) {
 	//translate(compressor_position-smokebox_boiler_firebox_position)rotate([0,0,90])compressor();
 	//translate(generator_position-smokebox_boiler_firebox_position)generator();
 	
-	//use to position cab penetrations:
-	//translate([0,0.248,0.61]) rotate([0,90,0]) cylinder(d=0.02, h=4);
-	//translate([0,-0.248,0.61]) rotate([0,90,0]) cylinder(d=0.02, h=4);
 }
