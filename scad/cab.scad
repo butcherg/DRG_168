@@ -90,8 +90,7 @@ module cabshell() {
 	
 	port_handrail_position = [0.01,-0.243,0.408];
 	starboard_handrail_position = [0.01,0.253,0.408];
-	port_handrail_penetration = [0.04,-0.243,0.408];
-	starboard_handrail_penetration = [0.04,0.253,0.408];
+	
 	//front wall:
 	difference() {
 		union() {
@@ -133,8 +132,8 @@ module cabshell() {
 			cube([1, 0.65, 0.4], center=true);
 			
 			//cab penetration holes:
-			translate(starboard_handrail_penetration) rotate([0,-90,0]) cylinder(d=0.02, h=0.08);
-			translate(port_handrail_penetration) rotate([0,-90,0]) cylinder(d=0.02, h=0.08);
+			translate([0.03,0,0]) translate(starboard_handrail_position) rotate([0,-90,0]) cylinder(d=0.02, h=0.08);
+			translate([0.03,0,0]) translate(port_handrail_position) rotate([0,-90,0]) cylinder(d=0.02, h=0.08);
 		}
 	}
 		
