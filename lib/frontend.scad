@@ -101,7 +101,7 @@ module cylinderchest1() {
 
 //removes screw hole and frame cutout in cylinderchest:
 module cylinderchest() {
-	tabslop=0.01; //add to the tab width and thickness 
+	tabslop=0.005; //add to the tab width and thickness 
 	tablength=0.25;
 	//K&S brass strip sku #8245, 0.064" thick, 1/4" wide, 12" long
 	tabthickness=0.064+tabslop;
@@ -112,7 +112,7 @@ module cylinderchest() {
 		cylinderchest1();
 		//translate([0.33/2-0.04/2,0,-0.001]) cylinder(h=2, d=screwhole_0_80, $fn=90);	//smokebox-cylinderchest-frame hole
 		//translate([0.33/2,0,-0.001]) cylinder(h=2, d=screwhole_0_80, $fn=90);	//smokebox-cylinderchest-frame hole
-		translate([0.33-tablength+0.001, -tabwidth/2, 0.1]) cube([tablength, tabwidth, tabthickness]);
+		translate([0.33-tablength+0.001, -tabwidth/2, 0.123]) cube([tablength, tabwidth, tabthickness]);
 	}
 	
 	//adds the pilot truck pillar:

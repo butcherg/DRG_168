@@ -20,7 +20,7 @@ module frontend_assembly() {
 		translate([0.5,0.341,-0.005]) rotate([0,90,0]) cylinder(d=0.03, h=0.5);
 
 	}
-	translate([-0.365,0,-0.11-0.05]) pilot();  //a bridge too far to print...
+	translate([-0.365,0,-0.11-0.05]) pilot();  
 	//translate([1.3-0.05,0,-0.16]) crossheadguide_hangar();  //use for inclusion of crosshead guide/hangar
 }
 
