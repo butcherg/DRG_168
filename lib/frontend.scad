@@ -1,7 +1,7 @@
 
 
 include <utilities.scad>
-//use <168_pilot.scad> //for alignment hole placement
+use <168_pilot.scad>
 
 
 crownofst=0.008;
@@ -169,11 +169,12 @@ module frontend() {
 	translate([0.43,-(framewidth/2)+(framethickness/2),frameheight+frontend_offset]) cylinder(d=0.02, h=0.01, $fn=6);
 
 	//front beam:
-	difference() {
+	//difference() {
 		translate([-0.07,-0.95/2,frameheight-0.17+frontend_offset]) roundedbox([0.07,0.95,0.15], 0.03);
-		translate([-0.1,-0.25,0.047]) rotate([0,90,0]) cylinder(d=0.041, h=0.06);
-		translate([-0.1,0.25,0.047]) rotate([0,90,0]) cylinder(d=0.041, h=0.06);
-	}
+	//	//pilot mounting dimples
+	//	translate([-0.1,-0.25,0.047]) rotate([0,90,0]) cylinder(d=0.041, h=0.06);
+	//	translate([-0.1,0.25,0.047]) rotate([0,90,0]) cylinder(d=0.041, h=0.06);
+	//}
 	
 	//translate([-0.35-0.07,0,-0.153]) pilot(); // for alignment hole placement
 
