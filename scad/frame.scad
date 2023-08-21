@@ -113,13 +113,14 @@ module frame(tab=true) {
 	//bottom plate fastening blocks:
 	blockoffset=0.029;
 	blockthickness=0.03;
+	screwhole_tap=0.8; //multiplier to reduce screwhole size for tapping
 	difference() {
 		translate([0.985-adjustment20230705,-framewidth/2,blockoffset]) cube([0.2, framewidth, blockthickness]);
-		translate([1.085-adjustment20230705, 0, 0]) cylinder(h=2, d=screwhole_0_80, $fn=90);
+		translate([1.085-adjustment20230705, 0, 0]) cylinder(h=2, d=screwhole_0_80*screwhole_tap, $fn=90);
 	}
 	difference() {
 		translate([1.885-adjustment20230705,-framewidth/2,blockoffset]) cube([0.2, framewidth, blockthickness]);
-		translate([1.985-adjustment20230705, 0, 0]) cylinder(h=2, d=screwhole_0_80, $fn=90);
+		translate([1.985-adjustment20230705, 0, 0]) cylinder(h=2, d=screwhole_0_80*screwhole_tap, $fn=90);
 	}
 
 	translate([1.495, -framewidth/2,0.1])
