@@ -7,7 +7,8 @@ use <168_pilot.scad>
 crownofst=0.008;
 
 module steamcylinder() {
-	translate([-0.025,0,0.02]) rotate([0,90,0]) difference() {
+	translate([-0.025,0,0.02]) rotate([0,90,0]) 
+	difference() {
 		union() {
 			//cylinder(h=0.35,d=.25);
 			cylinder(h=0.40,d=.25);
@@ -15,6 +16,7 @@ module steamcylinder() {
 			//translate([0, 0, 0.35-0.025]) cylinder(h=0.025,d=.259);
 			translate([0, 0, 0.40-0.025]) cylinder(h=0.025,d=.259);
 		}
+		//translate([0.2,0.0,0.0]) rotate([0,90,0]) cylinder(d=0.03, h=0.5);
 	}
 }
 
