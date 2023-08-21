@@ -5,10 +5,7 @@ OPENSCAD=/usr/bin/openscad
 #OPENSCAD=/usr/local/bin/openscad --enable=manifold --enable=lazy-union
 -include OpenSCAD.mk
 
-all: 168_pilot.stl 168_plate.stl bell_hangar_assembly.stl cab.stl cistern.stl compressor.stl connecting_rod.stl crosshead.stl driver_set.stl firebox_backhead.stl footboards.stl frame.stl frontend_assembly.stl generator.stl headlamp.stl siderod.stl smokebox_boiler_firebox_assembly.stl smokebox_front.stl tender_frame.stl tender_truck.stl 
-
-168_pilot.stl: ../scad/168_pilot.scad | ../lib/utilities.scad ../lib/Round-Anything/polyround.scad 
-	$(OPENSCAD) --export-format binstl -o 168_pilot.stl ../scad/168_pilot.scad
+all: 168_plate.stl bell_hangar_assembly.stl cab.stl cistern.stl compressor.stl connecting_rod.stl crosshead.stl driver_set.stl firebox_backhead.stl footboards.stl frame.stl frontend_assembly.stl generator.stl headlamp.stl siderod.stl smokebox_boiler_firebox_assembly.stl smokebox_front.stl tender_frame.stl tender_truck.stl 
 
 168_plate.stl: ../scad/168_plate.scad | ../lib/Round-Anything/polyround.scad 
 	$(OPENSCAD) --export-format binstl -o 168_plate.stl ../scad/168_plate.scad
@@ -43,7 +40,7 @@ footboards.stl: ../scad/footboards.scad | ../lib/Round-Anything/polyround.scad .
 frame.stl: ../scad/frame.scad | ../lib/utilities.scad ../lib/globals.scad 
 	$(OPENSCAD) --export-format binstl -o frame.stl ../scad/frame.scad
 
-frontend_assembly.stl: ../scad/frontend_assembly.scad | ../lib/frontend.scad ../lib/crossheadguide_hangar.scad ../lib/utilities.scad ../lib/globals.scad 
+frontend_assembly.stl: ../scad/frontend_assembly.scad | ../lib/frontend.scad ../lib/168_pilot.scad ../lib/crossheadguide_hangar.scad ../lib/utilities.scad ../lib/globals.scad 
 	$(OPENSCAD) --export-format binstl -o frontend_assembly.stl ../scad/frontend_assembly.scad
 
 generator.stl: ../scad/generator.scad | ../lib/Round-Anything/polyround.scad ../lib/utilities.scad 
@@ -70,39 +67,41 @@ tender_truck.stl: ../scad/tender_truck.scad | ../lib/utilities.scad ../lib/Round
 
 #targets for files that the scripts in ../scad need; are not built (stl)
 
-../lib/crossheadguide_hangar.scad: 
+../lib/168_pilot.scad: 
 	
-../lib/bell.scad: 
+../lib/utilities.scad: 
+	
+../lib/smokebox.scad: 
+	
+../lib/frontend.scad: 
 	
 ../lib/smokestack.scad: 
 	
 ../lib/steamdome.scad: 
 	
-../lib/Round-Anything/polyround.scad: 
-	
-../lib/frontend.scad: 
-	
-footboards.scad: 
+../lib/cab_floor.scad: 
 	
 ../lib/globals.scad: 
 	
-../lib/bellhangar.scad: 
-	
 ../lib/firebox.scad: 
 	
-../lib/smokebox.scad: 
+footboards.scad: 
 	
 smokebox_boiler_firebox_assembly.scad: 
 	
-../lib/sanddome.scad: 
-	
-../lib/utilities.scad: 
-	
-../lib/cab_floor.scad: 
+../lib/bell.scad: 
 	
 ../lib/path_extrude.scad: 
 	
+../lib/sanddome.scad: 
+	
+../lib/bellhangar.scad: 
+	
+../lib/crossheadguide_hangar.scad: 
+	
 ../lib/boiler.scad: 
+	
+../lib/Round-Anything/polyround.scad: 
 	
 
 clean:
