@@ -11,6 +11,8 @@ floorlength=0.77+flooroffset;
 floorwidth=1.05;
 floorthickness=0.025;
 
+loweroffset = 0.02; //use to determine how low to lower cab 2023-08-21
+
 
 module wedge(x, y, z) {
 	a = x; 
@@ -28,15 +30,18 @@ module newframe() {
 	frameheight=0.27;
 	framethickness=0.05;
 	
+	//frame:
 	difference() {
 		translate([0.38, -framewidth/2, -frameheight]) frame_channel(length=framelength, width=framewidth, height=frameheight, thickness=framethickness);
 		translate([0.70,0.25,-0.05]) rotate([0,90,180]) wedge(.15, .5, .29);
 		translate([0.37,-0.15,-.275]) rotate([0,62,0]) cube([.6,.6,.6]);
 	}
-	translate([0.726,-0.85/2,-0.065]) roundedbox([0.04,0.85,0.065], 0.01);
+	//rear bolster:
+	translate([0.726,-0.85/2,-0.065-loweroffset]) roundedbox([0.04,0.85,0.065], 0.01);
 }
 
 module cab_floor() {
+	translate([0,0,-loweroffset])
 	difference() {
 		union() {
 			translate([0.03,cabchannelwidth/2,.2]) 
@@ -55,10 +60,10 @@ module cab_floor() {
 	//new members to accomodate new frame...
 	newframe();
 	
-	translate([0.74, cabchannelwidth/2, 0]) 
+	translate([0.74, cabchannelwidth/2, -loweroffset]) 
 		rotate([0,0,90]) 
 			cab_rear_support();
-	translate([0.75, -cabchannelwidth/2, 0]) 
+	translate([0.75, -cabchannelwidth/2, -loweroffset]) 
 		rotate([0,0,-90]) 
 			cab_rear_support(false);
 }

@@ -162,7 +162,7 @@ module cabshell() {
 }
 
 module cab() {
-	translate([0.01,-0.005,.225]) cabshell();
+	translate([0.01,-0.005,0.205]) cabshell();
 	cab_floor();
 }
 
