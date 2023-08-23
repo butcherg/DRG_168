@@ -45,6 +45,6 @@ starboard_siderod_position = [0.0-adjustment20230705, 0.285, 0.0];
 port_connecting_rod_position = [0.465+1.01-adjustment20230705, -0.34, 0.085];
 starboard_connecting_rod_position = [0.38+1.01-adjustment20230705, 0.34, 0.0];
 
-cistern_position = [3.181-adjustment20230705,0,0.298]; //preliminary...
-tender_frame_position = [2.91-adjustment20230705,0,0.175];
+cistern_position = [3.181-adjustment20230705,0,0.273]; //preliminary...
+tender_frame_position = [2.91-adjustment20230705,0,0.15];
 

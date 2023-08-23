@@ -26,9 +26,9 @@ module footboards() {
 			translate([1.36,-bracewidth/2,0.5]) cube([0.05, bracewidth, 0.03]);
 			translate([1.8,-bracewidth/2,0.5]) cube([0.05, bracewidth, 0.03]);
 			translate([2.23,-bracewidth/2,0.5]) cube([0.05, bracewidth, 0.03]);
-			translate([2.7,-bracewidth/2,0.5]) cube([0.05, bracewidth, 0.03]);
+			translate([2.6,-bracewidth/2,0.5]) cube([0.05, bracewidth, 0.03]);
 		}
-		translate([0.28,0,0.3]) smokebox_boiler_firebox($fn=90, decor=false); //carve the angle in the braces
+		//translate([0.28,0,0.3]) smokebox_boiler_firebox($fn=90, decor=false); //carve the angle in the braces
 		translate([0.7,0,0.6]) rotate([0,90,0]) cylinder(d=0.6, h=2.5); //remove remainingbrace material inside the boiler
 		
 	}

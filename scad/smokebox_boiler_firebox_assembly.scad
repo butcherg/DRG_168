@@ -81,7 +81,7 @@ module smokebox_boiler_firebox_assembly() {
 	translate([0.3,0,0.58]) smokestack();
 	translate([0.805,0,0.52]) sanddome();
 	translate([1.76,0,0.565]) steamdome();
-	translate([-0.23,0,-0.29]) footboards();
+	translate([-0.23,0,-0.33]) footboards();
 }
 
 $fn =  $preview ? 90 : 180;
