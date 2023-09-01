@@ -8,6 +8,7 @@ difference() {
 	translate([-0.25,-1/8,0.27-1/16]*25.4) cube([2.425+0.25,1/4,1/16]*25.4);
 	translate([front_screw_hole*25.4,0,0]) cylinder(d=0.125*25.4, h=1*25.4, $fn=90);
 	translate([rear_screw_hole*25.4,0,0]) cylinder(d=0.125*25.4, h=1*25.4, $fn=90);
+	translate(crossheadguide_hangar_position*25.4) import("crossheadguide_hangar.stl"); //make the notch for the crossheadguide hangar
 }
 
 //translate(frontend_assembly_position*25.4) import("frontend_assembly.stl");
@@ -27,6 +28,8 @@ difference() {
 //translate([front_driver,0,0.09]*25.4) import("driver_set.stl");
 //translate([main_driver,0,0.09]*25.4) import("driver_set.stl");
 //translate([rear_driver,0,0.09]*25.4) import("driver_set.stl");
+
+//translate(crossheadguide_hangar_position*25.4) import("crossheadguide_hangar.stl");
 
 //translate(port_crosshead_position*25.4) import("crosshead.stl");
 //translate(starboard_crosshead_position*25.4) import("crosshead.stl");

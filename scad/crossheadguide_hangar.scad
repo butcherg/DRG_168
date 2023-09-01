@@ -1,7 +1,7 @@
 use <utilities.scad> //for roundedbox()
 //use <../Rods/crosshead.scad>
 
-include <globals.scad>
+include <../lib/globals.scad>
 
 
 //includes crosshead guides, need to experiment with resins for mechanical viability...
@@ -37,12 +37,12 @@ module crossheadguide_hangar()
 }
 
 
-crossheadguide_hangar($fn=90);
+//crossheadguide_hangar($fn=90);
 
 
 //for print, uncomment, render, and export to .stl: 
-//scale(25.4)
-//	crossheadguide_hangar($fn=360);
+scale(25.4)
+	crossheadguide_hangar($fn=360);
 
 //for itegration:
 //translate([-0.3,-0.68/2,0.055]) crosshead($fn=90);

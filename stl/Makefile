@@ -5,7 +5,7 @@ OPENSCAD=/usr/bin/openscad
 #OPENSCAD=/usr/local/bin/openscad --enable=manifold --enable=lazy-union
 -include OpenSCAD.mk
 
-all: 168_plate.stl bell_hangar_assembly.stl cab.stl cistern.stl compressor.stl connecting_rod.stl crosshead.stl driver_set.stl firebox_backhead.stl footboards.stl frame.stl frontend_assembly.stl generator.stl headlamp.stl siderod.stl smokebox_boiler_firebox_assembly.stl smokebox_front.stl tender_frame.stl tender_truck.stl 
+all: 168_plate.stl bell_hangar_assembly.stl cab.stl cistern.stl compressor.stl connecting_rod.stl crosshead.stl crossheadguide_hangar.stl driver_set.stl firebox_backhead.stl footboards.stl frame.stl frontend_assembly.stl generator.stl headlamp.stl siderod.stl smokebox_boiler_firebox_assembly.stl smokebox_front.stl tender_frame.stl tender_truck.stl 
 
 168_plate.stl: ../scad/168_plate.scad | ../lib/Round-Anything/polyround.scad 
 	$(OPENSCAD) --export-format binstl -o 168_plate.stl ../scad/168_plate.scad
@@ -27,6 +27,9 @@ connecting_rod.stl: ../scad/connecting_rod.scad | ../lib/utilities.scad
 
 crosshead.stl: ../scad/crosshead.scad | ../lib/utilities.scad 
 	$(OPENSCAD) --export-format binstl -o crosshead.stl ../scad/crosshead.scad
+
+crossheadguide_hangar.stl: ../scad/crossheadguide_hangar.scad | utilities.scad globals.scad 
+	$(OPENSCAD) --export-format binstl -o crossheadguide_hangar.stl ../scad/crossheadguide_hangar.scad
 
 driver_set.stl: ../scad/driver_set.scad | ../lib/Round-Anything/polyround.scad ../lib/utilities.scad 
 	$(OPENSCAD) --export-format binstl -o driver_set.stl ../scad/driver_set.scad
@@ -67,41 +70,45 @@ tender_truck.stl: ../scad/tender_truck.scad | ../lib/utilities.scad ../lib/Round
 
 #targets for files that the scripts in ../scad need; are not built (stl)
 
-../lib/168_pilot.scad: 
+utilities.scad: 
 	
 ../lib/utilities.scad: 
 	
-../lib/smokebox.scad: 
-	
-../lib/frontend.scad: 
-	
-../lib/smokestack.scad: 
-	
-../lib/steamdome.scad: 
-	
-../lib/cab_floor.scad: 
-	
-../lib/globals.scad: 
-	
-../lib/firebox.scad: 
-	
-footboards.scad: 
-	
-smokebox_boiler_firebox_assembly.scad: 
-	
-../lib/bell.scad: 
-	
-../lib/path_extrude.scad: 
-	
-../lib/sanddome.scad: 
-	
-../lib/bellhangar.scad: 
+../lib/168_pilot.scad: 
 	
 ../lib/crossheadguide_hangar.scad: 
 	
-../lib/boiler.scad: 
+../lib/bell.scad: 
+	
+../lib/bellhangar.scad: 
+	
+../lib/firebox.scad: 
 	
 ../lib/Round-Anything/polyround.scad: 
+	
+footboards.scad: 
+	
+../lib/cab_floor.scad: 
+	
+smokebox_boiler_firebox_assembly.scad: 
+	
+../lib/path_extrude.scad: 
+	
+../lib/smokestack.scad: 
+	
+../lib/globals.scad: 
+	
+globals.scad: 
+	
+../lib/steamdome.scad: 
+	
+../lib/sanddome.scad: 
+	
+../lib/frontend.scad: 
+	
+../lib/boiler.scad: 
+	
+../lib/smokebox.scad: 
 	
 
 clean:
