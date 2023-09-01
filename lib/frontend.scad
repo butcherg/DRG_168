@@ -178,6 +178,12 @@ module frontend() {
 	//	translate([-0.1,0.25,0.047]) rotate([0,90,0]) cylinder(d=0.041, h=0.06);
 	//}
 	
+	//uncoupling bar brackets:
+	translate([-0.07,0.04,0.097]) uncoupling_lever_bracket();
+	translate([-0.07,-0.04,0.097]) uncoupling_lever_bracket();
+	translate([-0.07,0.42,0.097]) uncoupling_lever_bracket();
+	translate([-0.07,-0.42,0.097]) uncoupling_lever_bracket();
+	
 	//translate([-0.35-0.07,0,-0.153]) pilot(); // for alignment hole placement
 
 	//footboard:

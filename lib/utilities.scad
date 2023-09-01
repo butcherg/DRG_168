@@ -536,6 +536,36 @@ module nutretainer_0_80(d=(5/32)*2) {
 	}
 }
 
+//### brake_lever_bracket()
+//
+//Makes a HO scale brake lever bracket. 
+//
+//(no parameters)
+//
+
+module uncoupling_lever_bracket() {
+
+	bracket_pts = [
+	[0.000,0.000,0.0020],
+[0.000,0.080,0.020],
+[0.020,0.080,0.020],
+[0.020,0.062,0.000],
+[0.014,0.062,0.000],
+[0.014,0.075,0.010],
+[0.006,0.075,0.010],
+[0.006,0.006,0.000],
+[0.06,0.006,0.000],
+[0.06,0.000,0.000]
+	];
+
+	translate([0,0.015/2,0]) rotate([90,0,0]) linear_extrude(0.015) polygon(polyRound(bracket_pts, 20));
+	translate([0.015,0,0]) cylinder(d=0.01, h=0.01, $fn=6);
+	translate([0.05,0,0]) cylinder(d=0.01, h=0.01, $fn=6);
+
+}
+
+uncoupling_lever_bracket();
+
 //
 //***
 //## Footboard Modules
