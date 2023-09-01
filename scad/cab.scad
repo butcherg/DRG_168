@@ -97,8 +97,8 @@ module cabshell() {
 			rotate([0,0,90]) translate([-0.50,0,0]) rotate([ 90,0,0]) linear_extrude(.03) polygon(polyRound(front_pts1));
 
 			//cab penetration grommets
-			translate(starboard_handrail_position) rotate([0,-90,0]) cylinder(d=0.04, h=0.02);
-			translate(port_handrail_position) rotate([0,-90,0]) cylinder(d=0.04, h=0.02);
+			translate([0,0,0.02]) translate(starboard_handrail_position) rotate([0,-90,0]) cylinder(d=0.04, h=0.02);
+			translate([0,0,0.02]) translate(port_handrail_position) rotate([0,-90,0]) cylinder(d=0.04, h=0.02);
 			
 		}
 		union () {
@@ -132,8 +132,8 @@ module cabshell() {
 			cube([1, 0.65, 0.4], center=true);
 			
 			//cab penetration holes:
-			translate([0.03,0,0]) translate(starboard_handrail_position) rotate([0,-90,0]) cylinder(d=0.02, h=0.08);
-			translate([0.03,0,0]) translate(port_handrail_position) rotate([0,-90,0]) cylinder(d=0.02, h=0.08);
+			translate([0.03,0,0.02]) translate(starboard_handrail_position) rotate([0,-90,0]) cylinder(d=0.02, h=0.08);
+			translate([0.03,0,0.02]) translate(port_handrail_position) rotate([0,-90,0]) cylinder(d=0.02, h=0.08);
 		}
 	}
 		
