@@ -72,8 +72,8 @@ module driver_set() {
 			rotate([90,0,0]) translate([0,0,-(gauge+W*2)/2])cylinder(d=1/8,h=gauge+W*2);
 		}
 		//siderod pins:
-		translate([0.091,-0.15,0]) rotate([90,0,0]) cylinder(d=0.03, h=0.12);
-		translate([0,0.15,-0.091]) rotate([-90,0,0]) cylinder(d=0.03, h=0.12);
+		translate([0.091,-0.15,-0.003]) rotate([90,0,0]) cylinder(d=0.03, h=0.12);
+		translate([-0.004,0.15,-0.091]) rotate([-90,0,0]) cylinder(d=0.03, h=0.12);
 	}
 }
 
