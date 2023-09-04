@@ -1,5 +1,5 @@
-use <utilities.scad> //for roundedbox()
-//use <../Rods/crosshead.scad>
+use <../lib/utilities.scad> //for roundedbox()
+//use <../lib/crosshead.scad>
 
 include <../lib/globals.scad>
 

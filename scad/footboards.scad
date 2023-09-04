@@ -1,6 +1,6 @@
 use <../lib/Round-Anything/polyround.scad>
 use <../lib/utilities.scad>
-use <smokebox_boiler_firebox_assembly.scad>
+//use <smokebox_boiler_firebox_assembly.scad>
 
 //footboards are translated to their places on the model in the module, 
 //in order to get the proper slant in the attachment pieces.
