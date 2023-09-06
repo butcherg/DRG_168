@@ -58,7 +58,7 @@ module smokebox_front()
 		//alignment flange:
 		rotate([0, 90, 0]) {
 			difference() {
-				boilercourse(0.61-0.0256*2, 0.15, 0.03);
+				boilercourse(0.615-0.0256*2, 0.2, 0.03);
 				translate([-0.03, -0.045/2, -0.61/2+0.01]) cube([0.3, 0.045, 0.05]);
 			}
 		}
