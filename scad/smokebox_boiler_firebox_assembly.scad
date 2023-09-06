@@ -14,6 +14,7 @@ use <footboards.scad>
 //for placement dimples :
 //use <compressor.scad>
 //use <generator.scad>
+//use <headlamp.scad>
 
 module smokebox_boiler_firebox(decor=true) {
 	translate(-smokebox_boiler_firebox_position) {
@@ -48,6 +49,10 @@ module smokebox_boiler_firebox(decor=true) {
 				translate([0,-0.03/2,0.65/2-dimpledepth]) 
 					cube([0.035,0.03,0.5]);
 	}
+	
+	//headlamp alignment flanges:
+	translate([0.01,0.097,0.58]) cube([0.13,0.007,0.02]);
+	translate([0.01,-0.104,0.58]) cube([0.13,0.007,0.02]);
 	
 	//handrail stanchions:
 	smokebox_diameter = 0.61;
@@ -91,6 +96,6 @@ scale(25.4) {
 	
 	//use to position mounting dimples:
 	//translate(compressor_position-smokebox_boiler_firebox_position)rotate([0,0,90])compressor();
-	//translate(generator_position-smokebox_boiler_firebox_position)generator();
-	
+	//translate(generator_position-smokebox_boiler_firebox_position) generator();
+	//translate(headlamp_position-smokebox_boiler_firebox_position) headlamp();
 }

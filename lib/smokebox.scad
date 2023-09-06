@@ -31,7 +31,10 @@ module smokebox(decor=true) {
 						translate([0.04,0,0.61/2])
 							rivet_course(start_x= 0, end_x=0.54, spacing=0.05, $fn=rivetfn);
 					translate([0.04,0,0])
-						rivet_cylinder(diameter=0.305, start_deg=0, end_deg=360, spacing_deg=10, $fn=rivetfn);
+						rivet_cylinder(diameter=0.305, start_deg=30, end_deg=330, spacing_deg=10, $fn=rivetfn);
+					translate([0.04,0,0])
+						rivet_cylinder(diameter=0.305, start_deg=-10, end_deg=10, spacing_deg=10, $fn=rivetfn);
+
 					translate([0.09, 0, 0])
 						rivet_cylinder(diameter=0.305, start_deg=120, end_deg=240, spacing_deg=10, $fn=rivetfn);
 					translate([0.54, 0, 0])
