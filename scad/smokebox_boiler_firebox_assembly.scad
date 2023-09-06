@@ -84,7 +84,7 @@ module smokebox_boiler_firebox_assembly() {
 	translate([-0.23,0,-0.33]) footboards();
 }
 
-$fn =  $preview ? 90 : 180;
+$fn =  $preview ? 90 : 360;
 
 scale(25.4) { 
 	smokebox_boiler_firebox_assembly();

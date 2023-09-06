@@ -77,7 +77,7 @@ module smokebox(decor=true) {
 }
 
 
-$fn = $preview ? 90 : 180;
+$fn = $preview ? 90 : 360;
 scale(25.4)
 smokebox();
 
