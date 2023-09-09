@@ -14,7 +14,8 @@ module crossheadguide_hangar()
 	t=0.02;  //thickness of the hangar and slide material
 	th=0.04; //height of the slides
 	r=0.05;  //radius of the hangar corners
-	d=0.05; 	 //the width of the hangar body:
+	d=0.05;  //the width of the hangar body
+	top=0.06;  //width of the top of the hangar
 	
 	//crosshead guide parameters:
 	hlen=0.5-0.05;  //0.5 is long, to allow hangar positioning; shorten after position is determined...
@@ -23,10 +24,13 @@ module crossheadguide_hangar()
 	translate([t,-w/2,0]) 
 		rotate([0,-90,0]) 
 			difference() {
-				roundedbox([h, w, t], r);
+				roundedbox([h+top, w, t], r);
 				translate([d, d, -0.01]) 
 					roundedbox([h-d*2, w-d*2, t*2], r);
+				translate([h-top/2.5,w/2-1/8,-0.001])
+					cube([1/16, 1/4, 0.05]);
 			}
+	
 			
 	//crosshead guides, positioned so they expose the inner edge in the hangar void 
 	//to allow the crosshead to slide on...
