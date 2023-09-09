@@ -561,10 +561,10 @@ module uncoupling_lever_bracket() {
 	translate([0,0.015/2,0]) rotate([90,0,0]) linear_extrude(0.015) polygon(polyRound(bracket_pts, 20));
 	translate([0.015,0,0]) cylinder(d=0.01, h=0.01, $fn=6);
 	translate([0.05,0,0]) cylinder(d=0.01, h=0.01, $fn=6);
-
+	translate([0,-0.007,0.045]) rotate([0,43,0]) cube([0.002, 0.014, 0.025]);
 }
 
-uncoupling_lever_bracket();
+//uncoupling_lever_bracket();
 
 //
 //***
