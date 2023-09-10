@@ -316,6 +316,22 @@ module half_sphere(d=1) {
 	rotate_extrude(angle=360) polygon(polyRound(pts, 20));
 }
 
+//### carving_arc()
+//
+//Makes a cube with a 90-degree arg cut into it for making curved corners. 
+//
+//- radius: radius of the arc
+//- length: length of the cube containing the arc
+
+module carving_arc(r=1, l=1)
+{
+	difference() {
+		cube([r,r,l]);
+		translate([0,0,-0.001]) cylinder(d=r, h=l*2, $fn=90);
+	}
+}
+
+
 //***
 //## Rivet Modules
 
@@ -596,6 +612,42 @@ module uncoupling_lever_bracket() {
 }
 
 //uncoupling_lever_bracket();
+
+
+//### footplate()
+//
+//Makes a HO scale footplate. 
+//
+//(no parameters)
+//
+module footplate()
+{
+	width = 0.06;
+	depth =  0.05;
+	height = 0.012;
+	thick = 0.005;
+	
+	hangar_pts = [
+		[0,0,0],
+		[0,0.06,0],
+		[0.01,0.06,0],
+		[0.01,0.01,0],
+		[0.03,0.01,0],
+		[0.03,0,0],
+		[0,0,0]
+	];
+	difference() {
+		cube([depth, width, height], center=true);
+		translate([-thick/2,0,thick/2]) cube([depth, width-thick, height], center=true);
+		translate([-0.0, width, -0.01]) rotate([90,-90,0]) carving_arc(0.035, width*2);
+	}
+	translate([0.035,-0.006,-0.015]) rotate([90,0,180]) linear_extrude(0.012) polygon(polyRound(hangar_pts,2));
+	
+}
+
+footplate();
+
+
 
 //
 //***
