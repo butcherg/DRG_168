@@ -49,7 +49,13 @@ module crosshead() {
 	od=0.05;
 	id=1/32;
 	ht=0.04;
-	translate([0,0,l/2+0.025/2]) rotate([0,90,0]) hollow_cylinder(od=od, id=id+0.005, ht=ht);
+	translate([0,0,l/2+0.025/2]) 
+		rotate([0,90,0]) 
+			//hollow_cylinder(od=od, id=id+0.005, ht=ht); // for metal rod
+			hollow_cylinder(od=od, id=id, ht=ht);
+	translate([-0.5,0,l/2+0.025/2]) 
+		rotate([0,90,0]) 
+			cylinder(d=id, h=0.5);
 
 	//bolts:
 	nd=0.025;
