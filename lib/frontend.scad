@@ -179,10 +179,14 @@ module frontend() {
 	//}
 	
 	//uncoupling bar brackets:
-	translate([-0.09,0.04,0.097]) uncoupling_lever_bracket();
-	translate([-0.09,-0.04,0.097]) uncoupling_lever_bracket();
-	translate([-0.09,0.42,0.097]) uncoupling_lever_bracket();
-	translate([-0.09,-0.42,0.097]) uncoupling_lever_bracket();
+	translate([-0.09,0.04,0.097]) uncoupling_lever_bracket(0.05);
+	translate([-0.09,-0.04,0.097]) uncoupling_lever_bracket(0.05);
+	translate([-0.09,0.42,0.097]) uncoupling_lever_bracket(0.05);
+	translate([-0.09,-0.42,0.097]) uncoupling_lever_bracket(0.05);
+	
+	//footplates:
+	translate([-0.12,0.4,-0.13]) footplate();
+	translate([-0.12,-0.4,-0.13]) footplate();
 	
 	//translate([-0.35-0.07,0,-0.153]) pilot(); // for alignment hole placement
 

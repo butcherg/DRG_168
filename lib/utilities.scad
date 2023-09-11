@@ -559,7 +559,7 @@ module nutretainer_0_80(d=(5/32)*2) {
 //(no parameters)
 //
 
-module uncoupling_lever_bracket() {
+module uncoupling_lever_bracket(height=0.05) {
 
 	bracket_pts = [
 	[0.000,0.000,0.0020],
@@ -593,25 +593,24 @@ module uncoupling_lever_bracket() {
 	bracket_pts2 = [
 [0.080,0.000,0.000],
 [0.020,0.000,0.000],
-[0.020,0.060,0.000],
-[0.000,0.060,0.000],
-[0.000,0.080,0.000],
-[0.010,0.080,0.000],
-[0.010,0.070,0.000],
-[0.020,0.070,0.000],
-[0.020,0.080,0.000],
-[0.030,0.080,0.000],
+[0.020,height-0.020,0.000],
+[0.000,height-0.020,0.000],
+[0.000,height,0.000],
+[0.010,height,0.000],
+[0.010,height-0.010,0.000],
+[0.020,height-0.010,0.000],
+[0.020,height,0.000],
+[0.030,height,0.000],
 [0.030,0.010,0.000],
 [0.080,0.010,0.000]
 ];
-
 	translate([0,0.015/2,0]) rotate([90,0,0]) linear_extrude(0.017) polygon(polyRound(bracket_pts2, 10));
 	translate([0.04,0,0]) cylinder(d=0.01, h=0.015, $fn=6);
 	translate([0.07,0,0]) cylinder(d=0.01, h=0.015, $fn=6);
 	//translate([0,-0.007,0.045]) rotate([0,43,0]) cube([0.002, 0.014, 0.025]);
 }
 
-//uncoupling_lever_bracket();
+uncoupling_lever_bracket();
 
 
 //### footplate()
@@ -622,15 +621,15 @@ module uncoupling_lever_bracket() {
 //
 module footplate()
 {
-	width = 0.06;
-	depth =  0.05;
-	height = 0.012;
-	thick = 0.005;
+	width = 0.12;
+	depth =  0.08;
+	height = 0.024;
+	thick = 0.01;
 	
 	hangar_pts = [
 		[0,0,0],
-		[0,0.06,0],
-		[0.01,0.06,0],
+		[0,0.16,0],
+		[0.01,0.16,0],
 		[0.01,0.01,0],
 		[0.03,0.01,0],
 		[0.03,0,0],
@@ -639,13 +638,23 @@ module footplate()
 	difference() {
 		cube([depth, width, height], center=true);
 		translate([-thick/2,0,thick/2]) cube([depth, width-thick, height], center=true);
-		translate([-0.0, width, -0.01]) rotate([90,-90,0]) carving_arc(0.035, width*2);
+		translate([-depth/4, width, -0.008]) rotate([90,-90,0]) carving_arc(depth/2, width*2);
 	}
-	translate([0.035,-0.006,-0.015]) rotate([90,0,180]) linear_extrude(0.012) polygon(polyRound(hangar_pts,2));
+	translate([depth/2+0.01,-width/10,-height+0.005]) 
+		rotate([90,0,180]) 
+			linear_extrude(width/5) 
+				polygon(polyRound(hangar_pts,2));
+
+	translate([depth/2-0.007, 0, 0.1])
+		rotate([0,90,0]) 
+			cylinder(d=0.015, h=0.008, $fn=6);
+	translate([depth/2-0.007, 0, 0.13])
+		rotate([0,90,0]) 
+			cylinder(d=0.015, h=0.008, $fn=6);
 	
 }
 
-footplate();
+//footplate();
 
 
 
