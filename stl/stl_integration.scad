@@ -46,8 +46,16 @@ difference() {
 //positioning aids:
 
 //handrails:
-translate([-0.4,0.248,0.905]*25.4) rotate([0,90,0]) cylinder(d=0.02*25.4, h=2.48*25.4, $fn=90);
-translate([-0.4,-0.248,0.905]*25.4) rotate([0,90,0]) cylinder(d=0.02*25.4, h=2.48*25.4, $fn=90);
+translate([-0.4,0.248,0.905]*25.4) 
+	rotate([0,90,0]) {
+		cylinder(d=0.02*25.4, h=2.48*25.4, $fn=90);
+		sphere(0.017*25.4, $fn=90);
+	}
+translate([-0.4,-0.248,0.905]*25.4) 
+	rotate([0,90,0]) {
+		cylinder(d=0.02*25.4, h=2.48*25.4, $fn=90);
+		sphere(0.017*25.4, $fn=90);
+	}
 
 module front_handrail() {
 	rotate_extrude(angle=90, convexity=10, $fn=90) 
