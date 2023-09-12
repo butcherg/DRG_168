@@ -8,7 +8,7 @@ difference() {
 	translate([-0.25,-1/8,0.27-1/16]*25.4) cube([2.425+0.25,1/4,1/16]*25.4);
 	translate([front_screw_hole*25.4,0,0]) cylinder(d=0.125*25.4, h=1*25.4, $fn=90);
 	translate([rear_screw_hole*25.4,0,0]) cylinder(d=0.125*25.4, h=1*25.4, $fn=90);
-	translate(crossheadguide_hangar_position*25.4) import("crossheadguide_hangar.stl"); //make the notch for the crossheadguide hangar
+	//translate(crossheadguide_hangar_position*25.4) import("crossheadguide_hangar.stl"); //make the notch for the crossheadguide hangar
 }
 
 //translate(frontend_assembly_position*25.4) import("frontend_assembly.stl");
@@ -48,3 +48,20 @@ difference() {
 //handrails:
 translate([-0.4,0.248,0.905]*25.4) rotate([0,90,0]) cylinder(d=0.02*25.4, h=2.48*25.4, $fn=90);
 translate([-0.4,-0.248,0.905]*25.4) rotate([0,90,0]) cylinder(d=0.02*25.4, h=2.48*25.4, $fn=90);
+
+module front_handrail() {
+	rotate_extrude(angle=90, convexity=10, $fn=90) 
+		translate ([(0.61/2)*25.4,0,0]) 
+			circle(d=0.02*25.4, $fn=90);
+	rotate([0,0,-2])
+		translate ([(0.61/2)*25.4,0,0])
+			sphere(0.017*25.4, $fn=90);
+	rotate([0,0,93])
+		translate ([(0.61/2)*25.4,0,0])
+			sphere(0.017*25.4, $fn=90);
+}
+
+translate([-0.615*25.4,0,0.585*25.4])
+	rotate([0,90,0])
+		rotate([0,0,90+45])
+			front_handrail();
