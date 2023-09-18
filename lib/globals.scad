@@ -34,6 +34,7 @@ steamdome_position = [1.28, 0, 0.86];
 bell_hangar_assembly_position = [1.673-adjustment20230705, 0, 0.99]; 
 generator_position = [1.909-adjustment20230705, 0, 0.935]; 
 compressor_position = [1.29-adjustment20230705, -0.429, 0.4];
+whistle_position = [1.33, -0.13, 1.2];
 
 cab_position = [2.12205-adjustment20230705, 0, 0.272]; 
 firebox_backhead_position = [2.291-adjustment20230705, 0, 0.646]; 

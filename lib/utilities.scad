@@ -610,7 +610,7 @@ module uncoupling_lever_bracket(height=0.05) {
 	//translate([0,-0.007,0.045]) rotate([0,43,0]) cube([0.002, 0.014, 0.025]);
 }
 
-uncoupling_lever_bracket();
+//uncoupling_lever_bracket();
 
 
 //### footplate()
@@ -656,7 +656,23 @@ module footplate()
 
 //footplate();
 
+//### elbow()
+//
+//Makes a HO scale plumbing 90-degree elbow. 
+//
+//-piperadius: radius of the pipe
+//-elbowradius: radius of the elbow
+//
 
+module elbow(piperadius=1, elbowradius=1.3) {
+	translate([0,-elbowradius,0]) 
+		rotate_extrude(angle=90) 
+			translate([elbowradius,0,0])
+				circle(piperadius);
+			
+}
+
+//elbow($fn=90);
 
 //
 //***
