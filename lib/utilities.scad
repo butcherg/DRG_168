@@ -627,34 +627,34 @@ module footplate()
 	thick = 0.01;
 	
 	hangar_pts = [
-		[0,0,0],
-		[0,0.16,0],
-		[0.01,0.16,0],
-		[0.01,0.01,0],
-		[0.03,0.01,0],
-		[0.03,0,0],
-		[0,0,0]
+		[0.000,0.000,0.000],
+[0.000,0.160,0.000],
+[0.015,0.160,0.000],
+[0.015,0.015,0.000],
+[0.035,0.015,0.000],
+[0.035,0.000,0.000],
+[0.000,0.000,0.000]
 	];
 	difference() {
 		cube([depth, width, height], center=true);
 		translate([-thick/2,0,thick/2]) cube([depth, width-thick, height], center=true);
 		translate([-depth/4, width, -0.008]) rotate([90,-90,0]) carving_arc(depth/2, width*2);
 	}
-	translate([depth/2+0.01,-width/10,-height+0.005]) 
+	translate([depth/2+0.015,-width/10,-height+0.00]) 
 		rotate([90,0,180]) 
 			linear_extrude(width/5) 
 				polygon(polyRound(hangar_pts,2));
 
-	translate([depth/2-0.007, 0, 0.1])
+	translate([depth/2-0.007, 0, 0.08])
 		rotate([0,90,0]) 
 			cylinder(d=0.015, h=0.008, $fn=6);
-	translate([depth/2-0.007, 0, 0.13])
+	translate([depth/2-0.007, 0, 0.12])
 		rotate([0,90,0]) 
 			cylinder(d=0.015, h=0.008, $fn=6);
 	
 }
 
-//footplate();
+footplate();
 
 //### elbow()
 //
