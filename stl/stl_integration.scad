@@ -40,8 +40,15 @@ difference() {
 
 //translate(cistern_position*25.4) import("cistern.stl");
 //translate(tender_frame_position*25.4) import("tender_frame.stl");
-//translate([3.2,0,-0.1]*25.4) import("tender_truck.stl");
-//translate([4.9,0,-0.1]*25.4) import("tender_truck.stl");
+
+//tender_truck_z=-0.1;
+//translate([3.2,0,tender_truck_z]*25.4) import("tender_truck.stl");
+//translate([4.9,0,tender_truck_z]*25.4) import("tender_truck.stl");
+
+//translate([3.256,0,tender_truck_z+0.06]*25.4) import("wheel_set.stl");
+//translate([3.256+0.564,0,tender_truck_z+0.06]*25.4) import("wheel_set.stl");
+//translate([4.95,0,tender_truck_z+0.06]*25.4) import("wheel_set.stl");
+//translate([4.95+0.564,0,tender_truck_z+0.06]*25.4) import("wheel_set.stl");
 
 //positioning aids:
 
