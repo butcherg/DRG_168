@@ -16,7 +16,15 @@ use <path_extrude.scad>
 //Appends n to vector v. Used with path_extrude to make paths that have been rounded with polyRound():
 //
 function addnum(v, n) =
-		[for (i = v) concat(i, n)];
+	[for (i = v) concat(i, n)];
+
+//###  contains(m, s)
+//
+//Searches string s for string m, returns true if found, false if not
+//
+function contains(match, string) = 
+	search(match, string) == [0] ? true : false;
+
 
 //***
 //## Common Definitions

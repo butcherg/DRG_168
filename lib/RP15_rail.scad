@@ -1,9 +1,5 @@
 use <Round-Anything/polyround.scad>
 
-function contains(match, string) = search(match, string) == [0] ? true : false;
-
-echo(contains("a", "abcdabcd"));
-
 code_297=0;
 code_250=1;
 code_208=2;
