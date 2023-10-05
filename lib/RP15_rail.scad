@@ -79,9 +79,9 @@ module rp15_rail(code, length, side) {
 				rp15_polygon(code, 0.015);
 }
 
-rp15_polygon(code_70, 0.012);
+module hon3_railsegment(length=6) {
+	translate([0,((3*12)/87)/2, 0]) rp15_rail(code_83, length, "right");
+	translate([0,-((3*12)/87)/2, 0]) rp15_rail(code_83, length, "left");
+}
 
-//example HOn3 segment:
-//translate([0,((3*12)/87)/2, 0]) rp15_rail(code_83, 3, "right");
-//translate([0,-((3*12)/87)/2, 0]) rp15_rail(code_83, 3, "left");
 

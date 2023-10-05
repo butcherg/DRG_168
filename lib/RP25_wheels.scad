@@ -74,6 +74,8 @@ function rp25_polygon(code=code_79, tire_width=0.045) = [
 	[0, rp25_profiles[code][D]+0.001, 0.003]
 ];
 
+function rp25_param(code, param) = rp25_profiles[code][param];
+
 
 module rp25_tire(code, radius=0.5, tire_width=0.045) {
 	translate([0,0,rp25_profiles[code][N]]) 
