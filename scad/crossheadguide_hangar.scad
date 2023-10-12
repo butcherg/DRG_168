@@ -24,9 +24,9 @@ module crossheadguide_hangar()
 	translate([t,-w/2,0]) 
 		rotate([0,-90,0]) 
 			difference() {
-				roundedbox([h+top, w, t], r);
-				translate([d, d, -0.01]) 
-					roundedbox([h-d*2, w-d*2, t*2], r);
+				roundedbox([h+top, w, t+0.005], r);
+				translate([d, d+0.01, -0.01]) 
+					roundedbox([h-d*2, w-d*2, t*3], r);
 				translate([h-top/2.5,w/2-1/8,-0.001])
 					cube([1/16, 1/4, 0.05]);
 			}
