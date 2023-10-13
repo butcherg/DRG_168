@@ -13,6 +13,9 @@ difference() {
 }
 
 translate(frontend_assembly_position*25.4) import("frontend_assembly.stl");
+translate(pilot_truck_position * 25.4) import("pilot_truck.stl");
+translate([-0.51, 0, -0.01]*25.4) import("wheel_set.stl");
+translate([-0.51+0.71, 0, -0.01 ]*25.4) import("wheel_set.stl");
 
 translate(smokebox_boiler_firebox_position*25.4) import("smokebox_boiler_firebox_assembly.stl");
 translate(smokebox_front_position*25.4) import("smokebox_front.stl");
