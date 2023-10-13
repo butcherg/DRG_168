@@ -570,50 +570,21 @@ module nutretainer_0_80(d=(5/32)*2) {
 module uncoupling_lever_bracket(height=0.05) {
 
 	bracket_pts = [
-	[0.000,0.000,0.0020],
-[0.000,0.080,0.020],
-[0.020,0.080,0.020],
-[0.020,0.062,0.000],
-[0.014,0.062,0.000],
-[0.014,0.075,0.010],
-[0.006,0.075,0.010],
-[0.006,0.006,0.000],
-[0.06,0.006,0.000],
-[0.06,0.000,0.000]
-	];
-	
-	bracket_pts1 = [
-[0.000,0.000,0.000],
-[0.000,0.080,0.000],
-[0.010,0.080,0.000],
-[0.010,0.070,0.000],
-[0.020,0.070,0.000],
-[0.020,0.080,0.000],
-[0.020,0.080,0.000],
-[0.030,0.080,0.000],
-[0.030,0.060,0.010],
-[0.010,0.060,0.000],
-[0.010,0.010,0.000],
-[0.060,0.010,0.000],
-[0.060,0.000,0.000]
-];
-
-	bracket_pts2 = [
 [0.080,0.000,0.000],
-[0.020,0.000,0.000],
-[0.020,height-0.020,0.000],
-[0.000,height-0.020,0.000],
-[0.000,height,0.000],
+[0.020,0.000,0.005],
+[0.020,height-0.02,0.000],
+[0.000,height-0.02,0.005],
+[0.000,height,0.005],
 [0.010,height,0.000],
-[0.010,height-0.010,0.000],
-[0.020,height-0.010,0.000],
+[0.010,height-0.01,0.000],
+[0.020,height-0.01,0.000],
 [0.020,height,0.000],
-[0.030,height,0.000],
-[0.030,0.010,0.000],
+[0.035,height,0.005],
+[0.035,0.010,0.000],
 [0.080,0.010,0.000]
 ];
-	translate([0,0.015/2,0]) rotate([90,0,0]) linear_extrude(0.017) polygon(polyRound(bracket_pts2, 10));
-	translate([0.04,0,0]) cylinder(d=0.01, h=0.015, $fn=6);
+	translate([0,0.015/2,0]) rotate([90,0,0]) linear_extrude(0.019) polygon(polyRound(bracket_pts, 10));
+	translate([0.045,0,0]) cylinder(d=0.01, h=0.015, $fn=6);
 	translate([0.07,0,0]) cylinder(d=0.01, h=0.015, $fn=6);
 	//translate([0,-0.007,0.045]) rotate([0,43,0]) cube([0.002, 0.014, 0.025]);
 }
@@ -631,8 +602,8 @@ module footplate()
 {
 	width = 0.12;
 	depth =  0.08;
-	height = 0.024;
-	thick = 0.01;
+	height = 0.026;
+	thick = 0.02;
 	
 	hangar_pts = [
 		[0.000,0.000,0.000],
@@ -643,16 +614,19 @@ module footplate()
 [0.035,0.000,0.000],
 [0.000,0.000,0.000]
 	];
+	//plate:
 	difference() {
 		cube([depth, width, height], center=true);
 		translate([-thick/2,0,thick/2]) cube([depth, width-thick, height], center=true);
-		translate([-depth/4, width, -0.008]) rotate([90,-90,0]) carving_arc(depth/2, width*2);
+		translate([-depth/4, width, -0.007]) rotate([90,-90,0]) carving_arc(depth/2, width*2);
 	}
-	translate([depth/2+0.015,-width/10,-height+0.00]) 
+	//hangar:
+	translate([depth/2+0.015,-width/8,-height+0.00]) 
 		rotate([90,0,180]) 
-			linear_extrude(width/5) 
+			linear_extrude(width/4) 
 				polygon(polyRound(hangar_pts,2));
 
+	//mounting bolts:
 	translate([depth/2-0.007, 0, 0.08])
 		rotate([0,90,0]) 
 			cylinder(d=0.015, h=0.008, $fn=6);
@@ -662,7 +636,7 @@ module footplate()
 	
 }
 
-footplate();
+//footplate();
 
 //### elbow()
 //
