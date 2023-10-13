@@ -1,5 +1,5 @@
 include <../lib/globals.scad>
-include <../lib/rp15_rail.scad>
+include <../lib/RP15_rail.scad>
 
 
 import("frame.stl");
