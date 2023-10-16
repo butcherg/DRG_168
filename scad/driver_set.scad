@@ -21,7 +21,7 @@ module driver() {
 				for(angle = [0:360/spokes:360]) 
 					rotate([0,0,angle]) rotate([90,0,0]) cylinder(d=0.04, h=(9/25.4)/2);
 				//
-				rotate([0,0,17]) translate([0,-0.08/2,-0.06/2]) roundedbox([0.12,0.08,0.06], 0.02);
+				rotate([0,0,17]) translate([0,-0.08/2,-0.06/2]) roundedbox([0.12,0.08,0.0805], 0.02);
 			}
 		translate([0,0,-0.25]) cylinder(d=0.07, h=0.5);
 	}
