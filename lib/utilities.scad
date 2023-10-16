@@ -583,7 +583,6 @@ module uncoupling_lever_bracket(height=0.06) {
 [0.034,0.010,0.000],
 [0.08,0.010,0.000]
 ];
-	echo(bracket_pts);
 	translate([0,0.015/2,0]) rotate([90,0,0]) linear_extrude(0.019) polygon(polyRound(bracket_pts, 10));
 	translate([0.045,0,0]) cylinder(d=0.01, h=0.015, $fn=6);
 	translate([0.07,0,0]) cylinder(d=0.01, h=0.015, $fn=6);
