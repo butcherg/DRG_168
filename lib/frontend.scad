@@ -3,6 +3,9 @@
 include <utilities.scad>
 use <168_pilot.scad>
 
+//for pilot support integration:
+//include <globals.scad>
+//use <../scad/smokebox_boiler_firebox_assembly.scad>
 
 crownofst=0.008;
 
@@ -171,12 +174,22 @@ module frontend() {
 	translate([0.43,-(framewidth/2)+(framethickness/2),frameheight+frontend_offset]) cylinder(d=0.02, h=0.01, $fn=6);
 
 	//front beam:
-	//difference() {
-		translate([-0.07,-0.95/2,frameheight-0.17+frontend_offset]) roundedbox([0.07,0.95,0.15], 0.03);
-	//	//pilot mounting dimples
-	//	translate([-0.1,-0.25,0.047]) rotate([0,90,0]) cylinder(d=0.041, h=0.06);
-	//	translate([-0.1,0.25,0.047]) rotate([0,90,0]) cylinder(d=0.041, h=0.06);
-	//}
+	difference() {
+		union() {
+			translate([-0.07,-0.95/2,frameheight-0.17+frontend_offset]) roundedbox([0.07,0.95,0.15], 0.03);
+			translate([-0.07,-0.252,0.097]) cube([0.07,0.03,0.01]);
+			translate([-0.07,0.22,0.097]) cube([0.07,0.03,0.01]);
+			translate([-0.032,0.235,0.097]) cylinder(d=0.02, h=0.02, $fn=6);
+			translate([-0.057,0.235,0.097]) cylinder(d=0.02, h=0.02, $fn=6);
+			translate([-0.032,-0.235,0.097]) cylinder(d=0.02, h=0.02, $fn=6);
+			translate([-0.057,-0.235,0.097]) cylinder(d=0.02, h=0.02, $fn=6);
+		}
+		//pilot support cutouts (to smokebox)
+		translate([-0.1,0.22,0.025]) rotate([0,50,9.7]) cylinder(d=0.023, h=0.59);
+		translate([-0.1,-0.22,0.025]) rotate([0,50,-9.7]) cylinder(d=0.023, h=0.59);
+	}
+	
+	
 	
 	//uncoupling bar brackets:
 	translate([-0.09,0.04,0.097]) uncoupling_lever_bracket(0.05);
@@ -204,6 +217,12 @@ $fn = $preview ? 90 : 180;
 //frontend();
 
 //for print, render and export to .stl:
-scale(25.4)
-	frontend();
+scale(25.4) 
+//	translate(frontend_assembly_position) // for pilot support integration
+		frontend();
+
+//for pilot support integration:
+//scale(25.4)
+//	translate(smokebox_boiler_firebox_position) 
+//		smokebox_boiler_firebox_assembly();
 
