@@ -85,9 +85,15 @@ translate([-0.615*25.4,0,0.585*25.4])
 		rotate([0,0,90+45])
 			front_handrail();
 
-	
-translate([-0.9,0.22,0.09]*25.4) rotate([0,50,9.4]) scale(25.4) cylinder(d=0.023, h=0.6, $fn=90);
-translate([-0.9,-0.22,0.09]*25.4) rotate([0,50,-9.7]) scale(25.4) cylinder(d=0.023, h=0.6, $fn=90);
+//pilot supports:
+translate([-0.9,0.22,0.09]*25.4) rotate([0,50,8.5]) scale(25.4) {
+	cylinder(d=0.023, h=0.6, $fn=90);
+	translate([0,0,0.6]) sphere(0.023/2, $fn=90);
+}
+translate([-0.9,-0.22,0.09]*25.4) rotate([0,50,-8.7]) scale(25.4) {
+	cylinder(d=0.023, h=0.6, $fn=90);
+	translate([0,0,0.6]) sphere(0.023/2, $fn=90);
+}
 
 
 translate([-40,0,-3.2]) scale(25.4) hon3_railsegment(8);
