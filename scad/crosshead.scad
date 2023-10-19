@@ -1,9 +1,10 @@
 use <../lib/utilities.scad>
+//use <connecting_rod.scad>  //for debugging slot
 
 h=0.2; //overall height
 l=0.18; //overall length (x axis)
-t=0.05; //thickness
-sl=0.03; //piston slot width
+t=0.055; //thickness
+sl=0.038; //piston slot width
 pn=0.03; //piston pin hole
 
 ih=h*0.5; //inset height
@@ -31,14 +32,16 @@ module crosshead() {
 			translate([-l/2, -st/2,h-st/2]) cube([l*2, st, st]);
 			
 			//front and back insets:
-			translate([-0.001,0.5/2,h-(ih/2)]) rotate([0,90,-90]) linear_extrude(0.5) trapezoid(ih, il, ih*d, of);
-			translate([l+0.001,-0.5/2,h-(ih/2)])  rotate([0,90,90]) linear_extrude(0.5) trapezoid(ih, il, ih*d, of);
+			translate([-0.009,0.5/2,h-(ih/2)]) rotate([0,90,-90]) linear_extrude(0.5) trapezoid(ih, il, ih*d, of);
+			translate([l+0.009,-0.5/2,h-(ih/2)])  rotate([0,90,90]) linear_extrude(0.5) trapezoid(ih, il, ih*d, of);
 			
 			//piston rod slot:
-			translate([il,-sl/2,(ih/2)]) cube([0.5,sl,ih]);
+			translate([il-0.02,-sl/2,(ih/2)]) cube([0.5,sl,ih]);
 			//piston rod pin hole:
 			translate([l/2, 0.5/2, h/2]) 
 				rotate([90,0,0]) cylinder(d=pn, h=0.5);
+				
+			//translate([0,0,0.6]) cube([1,1,1], center=true); //cut out top half, use for debugging slot
 		}
 		
 		
@@ -48,7 +51,7 @@ module crosshead() {
 	//K&S brass rod, 1/32", SKU #8160
 	od=0.05;
 	id=1/32;
-	ht=0.04;
+	ht=0.033;
 	translate([0,0,l/2+0.025/2]) 
 		rotate([0,90,0]) 
 			//hollow_cylinder(od=od, id=id+0.005, ht=ht); // for metal rod
@@ -87,5 +90,7 @@ module crosshead() {
 
 $fn = $preview ? 90 : 180;
 
-scale(25.4)
+scale(25.4) {
 	crosshead();
+	//translate([0.09,0,0.1]) connecting_rod(); //for debugging slot
+}
