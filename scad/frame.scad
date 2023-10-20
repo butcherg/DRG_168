@@ -1,5 +1,8 @@
 include <../lib/utilities.scad>
 include <../lib/globals.scad>
+use <../lib/brake_assembly.scad>
+
+use <driver_set.scad>
 
 framelength=2.5-adjustment20230705;
 framewidth=0.31;  //0.25 to accomodate the firebox overhangs, would prefer 0.29 but oh well...
@@ -7,6 +10,8 @@ frameheight=0.275;
 framethickness=0.06;
 
 rivetfn=10;
+
+
 
 module driverslot(framewidth=0.25, slot=0.129, axle=0.125, slotdepth=0.0, detentdepth=0.02)
 {
@@ -18,6 +23,8 @@ module driverslot(framewidth=0.25, slot=0.129, axle=0.125, slotdepth=0.0, detent
 		translate([(slot-axle)/2,0,0.001]) cube([axle,framewidth*2,detentdepth]);  //detent
 	}
 }
+
+	
 
 module driver_slots() {
 	//-0.75 is to accommodate the new frame position...
@@ -159,6 +166,11 @@ module frame(tab=true) {
 	translate([1.7,framewidth/2,0.12])
 		rotate([90,-90,180])
 			furnace_bearer();
+
+	translate([1.77,0.154,-0.07]) 
+		brake_assembly();
+	translate([1.77,-0.154,-0.07]) 
+		brake_assembly(true);
 }
 
 $fn = $preview ? 90 : 180;
@@ -170,3 +182,10 @@ scale(25.4)
 		translate([front_screw_hole,0,-1]) cylinder(h=2, d=screwhole_0_80, $fn=90);
 		translate([rear_screw_hole,0,-1]) cylinder(h=2, d=screwhole_0_80, $fn=90);
 	}
+	
+//scale(25.4) {
+	//translate([front_driver,0,0.095]) driver_set();
+	//translate([main_driver,0,0.095]) driver_set();
+	//translate([rear_driver,0,0.095]) driver_set();
+	
+//}
