@@ -508,6 +508,25 @@ module stanchion(height=0.05, base=0.03, ball=0.04, hole=0.025)
 	}
 }
 
+//### end_ball(diameter=0.04, hole=0.025)
+//
+//Makes a handrail end ball.
+//
+//- diameter: ball diameter
+//- hole: railing hole diameter
+//
+module end_ball(diameter=0.04, hole=0.025)
+{
+	translate([0,0,diameter/2])
+	difference() {
+		sphere(d = diameter);
+		translate([0,diameter/4,0]) 
+			rotate([90,0,0])cylinder(d=hole);
+	}
+}
+
+end_ball($fn=90);
+
 //### snifter_valve()
 //
 //Makes a HO scale snifter valve, goes on the cylinder chest.  Probably specific to the T-12s
