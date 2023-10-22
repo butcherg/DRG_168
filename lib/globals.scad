@@ -22,7 +22,7 @@ rear_screw_hole = 2.25-adjustment20230705;
 frontend_assembly_position = [-0.785, 0, 0.08]; 
 pilot_truck_position = [-0.59, 0, -0.07];
 
-smokebox_boiler_firebox_position = [-0.462-adjustment20230705, 0, 0.295]; 
+smokebox_boiler_firebox_position = [-0.462-adjustment20230705, 0, 0.32]; 
 //smokebox_boiler_firebox_position = [-0.462, 0, 0.495]; 
 smokebox_front_position = [-0.476-adjustment20230705, 0, 0.61]; 
 168_plate_position = [-0.53-adjustment20230705, 0, 0.61];

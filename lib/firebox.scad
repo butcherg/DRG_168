@@ -13,29 +13,29 @@ rivetfn=10;
 
 module firebox_pan() {
 	difference() {
-		translate([-pan_length/2,-pan_width/2,0.125]) 
-			roundedbox([pan_length,pan_width,0.085],0.02, $fn=90);
+		translate([-pan_length/2,-pan_width/2,0.1]) 
+			roundedbox([pan_length,pan_width,0.095],0.02, $fn=90);
 		translate([-pan_length/2+thick, -(pan_width-thick*2)/2,0])
 			roundedbox([pan_length*2,pan_width-thick*2,1],0.02, $fn=90);
 	}
 	
 	//firebox floor:
-	translate([-pan_length/2,-pan_width/2,0.125])
+	translate([-pan_length/2,-pan_width/2,0.12])
 		roundedbox([pan_length,pan_width,0.02],0.02, $fn=90);
 
 	//port front corner
-	translate([-0.27, -pan_width/2, 0.12])
+	translate([-0.27, -pan_width/2, 0.11])
 		rotate([90,-90,0])
 			rivet_course_rounded(0.01, 0.05, 0.01, 0.02, $fn=rivetfn);
-	translate([-0.27, pan_width/2, 0.12])
+	translate([-0.27, pan_width/2, 0.11])
 		rotate([-90,-90,0])
 			rivet_course_rounded(0.01, 0.05, 0.01, 0.02, $fn=rivetfn);
 	
 	//starboard front corner
-	translate([-0.26, -pan_width/2, 0.13])
+	translate([-0.26, -pan_width/2, 0.12])
 		rotate([90,-90,0])
 			rivet_course_rounded(0.01, 0.04, 0.01, 0.02, $fn=rivetfn);
-	translate([-0.26, pan_width/2, 0.13])
+	translate([-0.26, pan_width/2, 0.12])
 		rotate([-90,-90,0])
 			rivet_course_rounded(0.01, 0.04, 0.01, 0.02, $fn=rivetfn);
 }
