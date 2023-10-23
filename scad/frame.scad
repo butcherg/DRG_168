@@ -4,6 +4,9 @@ use <../lib/brake_assembly.scad>
 
 use <driver_set.scad>
 
+//enable/disable rivets, furnace bearers, break assembiles:
+details = true;
+
 framelength=2.5-adjustment20230705;
 framewidth=0.31;  //0.25 to accomodate the firebox overhangs, would prefer 0.29 but oh well...
 frameheight=0.275;
@@ -130,6 +133,7 @@ module frame(tab=true) {
 		translate([1.985-adjustment20230705, 0, 0]) cylinder(h=2, d=screwhole_0_80*screwhole_tap, $fn=90);
 	}
 
+if (details) {
 	translate([1.495, -framewidth/2,0.1])
 		rotate([90,-90,0])
 			rivet_course_rounded(0.01, 0.15, 0.01, 0.02, $fn=rivetfn);
@@ -170,7 +174,8 @@ module frame(tab=true) {
 	translate([1.77,0.154,-0.07]) 
 		brake_assembly();
 	translate([1.77,-0.154,-0.07]) 
-		brake_assembly(true);
+		mirror([0,1,0]) brake_assembly();
+}
 }
 
 $fn = $preview ? 90 : 180;
