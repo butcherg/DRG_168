@@ -18,7 +18,7 @@ module brake_cylinder() {
 	translate([0,0,0.107]) cylinder(d=0.11, h=0.005);
 }
 
-module brake_assembly_parts() {
+module brake_assembly() {
 	mountplate_pts = [
 [0.150,0.000,0.050],
 [0.000,0.350,0.020],
@@ -65,12 +65,6 @@ module brake_assembly_parts() {
 
 }
 
-module brake_assembly(m=false) {
-	if (m)
-		mirror([0,1,0]) brake_assembly_parts();
-	else
-		brake_assembly_parts();
-}
-
 scale(25.4)
-	brake_assembly(true, $fn=90);
+	brake_assembly($fn=90);
+
