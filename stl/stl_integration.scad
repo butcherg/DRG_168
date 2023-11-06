@@ -1,7 +1,19 @@
 include <../lib/globals.scad>
 include <../lib/RP15_rail.scad>
 
+module front_handrail() {
+	rotate_extrude(angle=90, convexity=10, $fn=90) 
+		translate ([(0.61/2)*25.4,0,0]) 
+			circle(d=0.02*25.4, $fn=90);
+	rotate([0,0,-2])
+		translate ([(0.61/2)*25.4,0,0])
+			sphere(0.017*25.4, $fn=90);
+	rotate([0,0,93])
+		translate ([(0.61/2)*25.4,0,0])
+			sphere(0.017*25.4, $fn=90);
+}
 
+translate([0,0,0.209]*25.4) {  //moves model up out of the negative Z region
 import("frame.stl");
 
 //brass frame spine:
@@ -68,18 +80,6 @@ translate([-0.4,-0.248,0.905]*25.4)
 		sphere(0.017*25.4, $fn=90);
 	}
 
-module front_handrail() {
-	rotate_extrude(angle=90, convexity=10, $fn=90) 
-		translate ([(0.61/2)*25.4,0,0]) 
-			circle(d=0.02*25.4, $fn=90);
-	rotate([0,0,-2])
-		translate ([(0.61/2)*25.4,0,0])
-			sphere(0.017*25.4, $fn=90);
-	rotate([0,0,93])
-		translate ([(0.61/2)*25.4,0,0])
-			sphere(0.017*25.4, $fn=90);
-}
-
 translate([-0.615*25.4,0,0.585*25.4])
 	rotate([0,90,0])
 		rotate([0,0,90+45])
@@ -97,3 +97,4 @@ translate([-0.9,-0.22,0.09]*25.4) rotate([0,50,-8.7]) scale(25.4) {
 
 
 translate([-40,0,-3.2]) scale(25.4) hon3_railsegment(8);
+}
