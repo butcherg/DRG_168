@@ -16,10 +16,10 @@ plan_pts = [
 [cistern_length,0.000,cistern_corner],
 [cistern_length,cistern_width,cistern_corner],
 [0.000,cistern_width,cistern_corner],
-[0.000,0.640,cistern_corner],
-[cistern_bunker_depth,0.640,cistern_corner],
-[cistern_bunker_depth,0.150,cistern_corner],
-[0.000,0.150,cistern_corner]
+[0.000,cistern_width-cistern_leg,cistern_corner],
+[cistern_bunker_depth,cistern_width-cistern_leg,cistern_corner],
+[cistern_bunker_depth,cistern_leg,cistern_corner],
+[0.000,cistern_leg,cistern_corner]
 ];
 
 wall=0.02;
@@ -28,10 +28,10 @@ plan_pts2 = [
 [cistern_length-wall,wall,cistern_corner],
 [cistern_length-wall,cistern_width-wall,cistern_corner],
 [wall,cistern_width-wall,cistern_corner],
-[wall,0.640+wall,cistern_corner],
-[cistern_bunker_depth+wall,0.640+wall,cistern_corner],
-[cistern_bunker_depth+wall,0.150-wall,cistern_corner],
-[wall,0.150-wall,cistern_corner]
+[wall,cistern_width-cistern_leg+wall,cistern_corner],
+[cistern_bunker_depth+wall,cistern_width-cistern_leg+wall,cistern_corner],
+[cistern_bunker_depth+wall,cistern_leg-wall,cistern_corner],
+[wall,cistern_leg-wall,cistern_corner]
 ];
 
 
