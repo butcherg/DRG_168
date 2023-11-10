@@ -118,6 +118,23 @@ module edge_trim_end() {
 	path_extrude(path_pts, polyRound(trim_profile,20));
 }
 
+//trim_front_pts = [
+//	[0,0,0],
+//	[0.015,0.02,0.01],
+//	[0.015,0.04,0]
+//];
+trim_front_pts = [
+	[0.001,0.001,0],
+	[cistern_corner, 0, cistern_corner],
+	[cistern_corner, cistern_corner, 0]
+];
+module edge_trim_front() {
+	path_pts = addnum(polyRound(trim_front_pts,7),0);
+	echo(path_pts);
+	rotate([0,-20,0]) rotate([0,0,-90]) path_extrude(path_pts, polyRound(trim_profile,20));
+	translate([0,-0.0035,-0.02]) sphere(0.008);
+}
+
 
 module cistern_assembly() {
 	render() 
@@ -136,7 +153,7 @@ module cistern_assembly() {
 
 module trim() {
 	trim_offset=0.017;
-	translate([0,cistern_width/2-trim_offset, cistern_height-0.135]) 
+	translate([0,cistern_width/2-trim_offset, cistern_height-0.137]) 
 		rotate([90,0,0]) 
 			edge_trim_profile();
 	translate([0,-cistern_width/2-trim_offset-0.001, cistern_height-0.135]) 
@@ -145,6 +162,12 @@ module trim() {
 
 	translate([0,0, cistern_height-0.124]) 
 		edge_trim_end();
+		
+	translate([0.001,-cistern_width/2+cistern_corner+0.0087, cistern_height-0.116]) 
+		edge_trim_front();
+	//translate([0.001,cistern_width/2+cistern_corner+0.0087, cistern_height-0.116])
+	translate([0.001,cistern_width/2-cistern_corner-0.0055, cistern_height-0.1182])	
+		mirror([0,1,0]) edge_trim_front();
 }
 
 module rivets() {
@@ -374,9 +397,43 @@ module rivets() {
 			rivet_course_rounded(0, end_course_length, 0.01, 0.05, $fn=10);
 }
 
+module cistern_floor() {
+	difference() {
+		translate([0,-cistern_width/2,-0.0])
+			linear_extrude(0.03)
+				polygon(polyRound(plan_pts,20));
+		translate([wall*4, (cistern_width/2)-(cistern_leg/2), -0.05])
+			cylinder(d=cistern_leg-(wall*2), h=0.1);
+		for (i=[1:1:17]) {
+			translate([wall*4+((cistern_leg-wall)*i), (cistern_width/2)-(cistern_leg/2), -0.05])
+				cylinder(d=cistern_leg-(wall*2), h=0.1);
+		}
+		translate([wall*4, -(cistern_width/2)+(cistern_leg/2), -0.05])
+			cylinder(d=cistern_leg-(wall*2), h=0.1);
+		for (i=[1:1:17]) {
+			translate([wall*4+((cistern_leg-wall)*i), -((cistern_width/2)-(cistern_leg/2)), -0.05])
+				cylinder(d=cistern_leg-(wall*2), h=0.1);
+		}
+		for (i=[14:1:17]) {
+			translate([wall*4+((cistern_leg-wall)*i), -((cistern_width/2)-(cistern_leg*4)), -0.05])
+				cylinder(d=cistern_leg-(wall*2), h=0.1);
+		}
+		for (i=[14:1:17]) {
+			translate([wall*4+((cistern_leg-wall)*i), ((cistern_width/2)-(cistern_leg*4)), -0.05])
+				cylinder(d=cistern_leg-(wall*2), h=0.1);
+		}
+		for (i=[14:1:17]) {
+			translate([wall*4+((cistern_leg-wall)*i), 0, -0.05])
+				cylinder(d=cistern_leg-(wall*2), h=0.1);
+		}
+      }
+}
+
+
 
 module cistern() {
 	cistern_assembly();
+	//cistern_floor();
 	trim();
 	rivets();
 }
