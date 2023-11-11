@@ -51,4 +51,6 @@ crossheadguide_hangar_position = [0.46, 0, -0.08];
 
 cistern_position = [3.181-adjustment20230705,0,0.273]; //preliminary...
 tender_frame_position = [2.91-adjustment20230705,0,0.15];
+tender_ladder_position = [5.49, 0, 0.3];
+
 
