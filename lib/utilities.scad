@@ -525,7 +525,7 @@ module end_ball(diameter=0.04, hole=0.025)
 	}
 }
 
-end_ball($fn=90);
+//end_ball($fn=90);
 
 //### snifter_valve()
 //
