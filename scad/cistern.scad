@@ -130,7 +130,6 @@ trim_front_pts = [
 ];
 module edge_trim_front() {
 	path_pts = addnum(polyRound(trim_front_pts,7),0);
-	echo(path_pts);
 	rotate([0,-20,0]) rotate([0,0,-90]) path_extrude(path_pts, polyRound(trim_profile,20));
 	translate([0,-0.0035,-0.02]) sphere(0.008);
 }
