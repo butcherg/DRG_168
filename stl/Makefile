@@ -117,12 +117,19 @@ clean:
 dist:
 	mkdir DRG_168
 	cp ../lib/globals.scad DRG_168/.
+	cp ../lib/RP15_rail.scad DRG_168/.
 	cp *.stl DRG_168/.
 	cp stl_integration.scad DRG_168/.
 	sed -i 's/\.\.\/lib\///g' DRG_168/stl_integration.scad
-	sed 's/\/\///' DRG_168/stl_integration.scad > DRG_168/foo.scad
-	$(OPENSCAD) --export-format 3mf -o DRG_168/stl_integration.3mf DRG_168/foo.scad
-	rm DRG_168/foo.scad
+	#sed 's/\/\///' DRG_168/stl_integration.scad > DRG_168/foo.scad
+	#$(OPENSCAD) --export-format 3mf -o DRG_168/stl_integration.3mf DRG_168/foo.scad
+	$(OPENSCAD) --export-format 3mf -o DRG_168/stl_integration.3mf DRG_168/stl_integration.scad
+	#rm DRG_168/foo.scad
+	tar -czvf DRG_168.tar.gz DRG_168
+#	rm -rf DRG_168
+
+stldist:
+	mkdir DRG_168
+	cp *.stl DRG_168/.
 	tar -czvf DRG_168_STLs.tar.gz DRG_168
 	rm -rf DRG_168
-
