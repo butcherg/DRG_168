@@ -134,7 +134,6 @@ module edge_trim_front() {
 	translate([0,-0.0035,-0.02]) sphere(0.008);
 }
 
-
 module cistern_assembly() {
 	render() 
 	difference() {  //use render() to solve preview disconnects caused by differences() with linear_extrude()
@@ -428,16 +427,44 @@ module cistern_floor() {
       }
 }
 
-
+module cistern_spacer(w=1, s=1.01) {
+	difference() {
+		translate([-w/2,-w/2,0]) cube([w,w,0.02]);
+		translate([-w/s,0,-0.01]) cylinder(d=w*1.5, h=0.1);
+		translate([w/s,0,-0.01]) cylinder(d=w*1.5, h=0.1);
+	}
+}
 
 module cistern() {
 	cistern_assembly();
 	//cistern_floor();
 	trim();
 	rivets();
+	
+	translate([1.8,0,0.005])
+	translate([0.55/2,0,0]) 
+		rotate([0,0,90]) 
+			cistern_spacer(0.55);
+
+	translate([0.4,0.34,0.005])
+		cistern_spacer(0.12);
+	translate([0.4,-0.34,0.005])
+		cistern_spacer(0.12);
+
+	translate([0.9,0.34,0.005])
+		cistern_spacer(0.12);
+	translate([0.9,-0.34,0.005])
+		cistern_spacer(0.12);
+	
+	translate([1.4,0.34,0.005])
+		cistern_spacer(0.12);
+	translate([1.4,-0.34,0.005])
+		cistern_spacer(0.12);
 }
 
 $fn =  $preview ? 90 : 180;
 
-scale(25.4)
+scale(25.4) {
 	cistern();
+	//cistern_spacer();
+}
