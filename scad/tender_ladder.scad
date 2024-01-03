@@ -2,7 +2,7 @@ use <../lib/utilities.scad>
 
 ladderheight=0.73;
 ladderwidth=0.15;
-ladderdepth=0.15;
+ladderdepth=0.08;
 ladderthickness=0.02;
 laddermaterial=0.02;
 
