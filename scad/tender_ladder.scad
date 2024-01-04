@@ -70,8 +70,5 @@ module tender_ladder() {
 	}
 }
 
-//scale(25.4)
+scale(25.4)
 	tender_ladder($fn=90);
-	//laddermount($fn=90);
-	//color("green") laddermount1($fn=90);
-	//ladder_frame($fn=90);
