@@ -633,6 +633,17 @@ module footplate()
 [0.04,0.000,0.000],
 [0.000,0.000,0.000]
 	];
+
+	hangar_pts1 = [
+	[0.000,0.000,0.000],
+[0.000,0.160,0.000],
+[0.035,0.160,0.000],
+[0.035,0.015,0.000],
+[0.060,0.015,0.000],
+[0.060,0.000,0.000],
+[0.000,0.000,0.000]
+	];
+	
 	//plate:
 	difference() {
 		cube([depth, width, height], center=true);
@@ -640,16 +651,16 @@ module footplate()
 		translate([-depth/4, width, -0.007]) rotate([90,-90,0]) carving_arc(depth/2, width*2);
 	}
 	//hangar:
-	translate([depth/2+0.015,-width/8,-height+0.00]) 
+	translate([depth/1.5+0.015,-width/8,-height+0.00]) 
 		rotate([90,0,180]) 
 			linear_extrude(width/4) 
-				polygon(polyRound(hangar_pts,2));
+				polygon(polyRound(hangar_pts1,2));
 
 	//mounting bolts:
-	translate([depth/2-0.007, 0, 0.08])
+	translate([depth/2.3-0.007, 0, 0.08])
 		rotate([0,90,0]) 
 			cylinder(d=0.015, h=0.008, $fn=6);
-	translate([depth/2-0.007, 0, 0.12])
+	translate([depth/2.3-0.007, 0, 0.12])
 		rotate([0,90,0]) 
 			cylinder(d=0.015, h=0.008, $fn=6);
 	
