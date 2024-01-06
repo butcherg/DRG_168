@@ -2,6 +2,9 @@ use <../lib/Round-Anything/polyround.scad>
 use <../lib/utilities.scad>
 use <../lib/path_extrude.scad>
 
+//for fit:
+//use <tender_ladder.scad>
+
 //major dimensions:
 cistern_length=2.37;
 cistern_width=0.83;  //0.79;
@@ -9,7 +12,7 @@ cistern_height=0.69;
 cistern_leg= 0.15;
 cistern_corner=0.05;
 cistern_wallwidth=0.015;
-cistern_bunker_depth=1.79;
+cistern_bunker_depth=1.7;
 
 plan_pts = [
 [0.000,0.000,cistern_corner],
@@ -134,7 +137,6 @@ module edge_trim_front() {
 	translate([0,-0.0035,-0.02]) sphere(0.008);
 }
 
-
 module cistern_assembly() {
 	render() 
 	difference() {  //use render() to solve preview disconnects caused by differences() with linear_extrude()
@@ -146,6 +148,41 @@ module cistern_assembly() {
 		translate([0,0,0.55]) profile1();
 		translate([2,0,0.55]) profile2();
 		translate([1.995,-0.5,0.55]) cube([1,1,1]);
+
+	}
+	
+	//bunker extension wall:
+	extension_width = cistern_width -0.001;
+	translate([1.72,0,-0.05])
+		rotate([0,-90,0]) 
+			difference() {
+				cylinder(d=extension_width*2, h=0.02);
+				translate([0,extension_width*1.5, -0.001]) 
+					cube([extension_width*2, extension_width*2, 1], center=true);
+				translate([0,-extension_width*1.5, -0.001]) 
+					cube([extension_width*2, extension_width*2, 1], center=true);
+				translate([-0.23,0, -0.001]) 
+					cube([extension_width*2, extension_width*2, 1], center=true);
+				
+			}
+			
+	//water hatch:
+	translate([2.2,0,0.55]) {
+		roundedbox([0.15,0.27,0.05], 0.025, true);
+		translate([0,0,0.05]) roundedbox([0.16,0.28,0.01], 0.025, true);
+		translate([-0.08,0.08,0]) {
+			translate([0,-0.02,0.06]) {
+				rotate([-90,0,0]) cylinder(d=0.02, h=0.04);
+				translate([0,0,-0.005]) cube([0.04,0.04,0.01]);
+			}
+		}
+				
+		translate([-0.08,-0.08,0]) {
+			translate([0,-0.02,0.06]) {
+				rotate([-90,0,0]) cylinder(d=0.02, h=0.04);
+				translate([0,0,-0.005]) cube([0.04,0.04,0.01]);
+			}
+		}
 
 	}
 }
@@ -394,6 +431,14 @@ module rivets() {
 	translate([cistern_length,-end_course_length/2,0.23])
 		rotate([90,0,90])
 			rivet_course_rounded(0, end_course_length, 0.01, 0.05, $fn=10);
+	
+	//bunker extension rivets:
+	translate([1.7,0,-0.07]) 
+		rivet_circle_rounded(diameter=cistern_width, start_deg=-27, end_deg=27, rivet_diameter=0.01, spacing_deg=6, $fn=30);
+	translate([1.72,0,-0.07]) 
+		rotate([0,0,180])
+		rivet_circle_rounded(diameter=cistern_width, start_deg=-27, end_deg=27, rivet_diameter=0.01, spacing_deg=6, $fn=30);
+
 }
 
 module cistern_floor() {
@@ -428,16 +473,44 @@ module cistern_floor() {
       }
 }
 
-
+module cistern_spacer(w=1, s=1.01) {
+	difference() {
+		translate([-w/2,-w/2,0]) cube([w,w,0.02]);
+		translate([-w/s,0,-0.01]) cylinder(d=w*1.5, h=0.1);
+		translate([w/s,0,-0.01]) cylinder(d=w*1.5, h=0.1);
+	}
+}
 
 module cistern() {
 	cistern_assembly();
 	//cistern_floor();
 	trim();
 	rivets();
+	
+	translate([1.76,0,0.005])
+	translate([0.55/2,0,0]) 
+		rotate([0,0,90]) 
+			cistern_spacer(0.64, 1.06);
+
+	translate([0.4,0.34,0.005])
+		cistern_spacer(0.12);
+	translate([0.4,-0.34,0.005])
+		cistern_spacer(0.12);
+
+	translate([0.9,0.34,0.005])
+		cistern_spacer(0.12);
+	translate([0.9,-0.34,0.005])
+		cistern_spacer(0.12);
+	
+	translate([1.4,0.34,0.005])
+		cistern_spacer(0.12);
+	translate([1.4,-0.34,0.005])
+		cistern_spacer(0.12);
 }
 
 $fn =  $preview ? 90 : 180;
 
-scale(25.4)
+scale(25.4) {
 	cistern();
+	//translate([cistern_length+0.01,0,0.02]) tender_ladder();
+}

@@ -590,8 +590,8 @@ module uncoupling_lever_bracket(height=0.06) {
 
 	bracket_pts = [
 [0.080,0.000,0.000],
-[0.020,0.000,0.005],
-[0.020,height-0.025,0.011],
+[0.015,0.000,0.005],
+[0.015,height-0.025,0.011],
 [0.000,height-0.025,0.005],
 [0.000,height,0.005],
 [0.0115,height,0.000],
@@ -608,7 +608,7 @@ module uncoupling_lever_bracket(height=0.06) {
 	//translate([0,-0.007,0.045]) rotate([0,43,0]) cube([0.002, 0.014, 0.025]);
 }
 
-//uncoupling_lever_bracket();
+uncoupling_lever_bracket();
 
 
 //### footplate()
