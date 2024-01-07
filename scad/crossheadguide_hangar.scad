@@ -27,8 +27,8 @@ module crossheadguide_hangar()
 				roundedbox([h+top, w, t+0.005], r);
 				translate([d, d+0.01, -0.01]) 
 					roundedbox([h-d*2, w-d*2, t*3], r);
-				translate([h-top/2.5,w/2-1/8,-0.001])
-					cube([1/16, 1/4, 0.05]);
+				translate([h-top/1.9,w/2-1/8-0.01/2,-0.001])
+					cube([1/16+0.01, 1/4+0.01, 0.05]);
 			}
 	
 			
