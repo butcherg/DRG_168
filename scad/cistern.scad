@@ -25,7 +25,7 @@ plan_pts = [
 [0.000,cistern_leg,cistern_corner]
 ];
 
-wall=0.02;
+wall=0.03;
 plan_pts2 = [
 [wall,wall,cistern_corner],
 [cistern_length-wall,wall,cistern_corner],
@@ -407,17 +407,17 @@ module rivets() {
 	//port covers:
 	translate([cistern_length, cistern_width/ofst, 0.24])
 		rotate([0,90,0])
-			cylinder(d=0.08, h=0.005, $fn=rivet_segments);
+			cylinder(d=0.08, h=0.005, $fn=90);
 	translate([cistern_length, -cistern_width/ofst, 0.24])
 		rotate([0,90,0])
-			cylinder(d=0.08, h=0.005, $fn=rivet_segments);
+			cylinder(d=0.08, h=0.005, $fn=90);
 	//port rivet circles:
 	translate([cistern_length+0.005,cistern_width/ofst,0.24])
 		rotate([0,180,0])
-			rivet_circle_rounded(diameter=0.03, start_deg=0, end_deg=360, rivet_diameter=0.01, spacing_deg=30, $fn=rivet_segments);
+			rivet_circle_rounded(diameter=0.03, start_deg=0, end_deg=360, rivet_diameter=0.01, spacing_deg=40, $fn=rivet_segments);
 	translate([cistern_length+0.005,-cistern_width/ofst,0.24])
 		rotate([0,180,0])
-			rivet_circle_rounded(diameter=0.03, start_deg=0, end_deg=360, rivet_diameter=0.01, spacing_deg=30, $fn=rivet_segments);
+			rivet_circle_rounded(diameter=0.03, start_deg=0, end_deg=360, rivet_diameter=0.01, spacing_deg=40, $fn=rivet_segments);
 	//port center rivets:
 	translate([cistern_length+0.005,-cistern_width/ofst,0.25])
 		rotate([0,90,0])
@@ -425,7 +425,7 @@ module rivets() {
 	translate([cistern_length+0.005,cistern_width/ofst,0.25])
 		rotate([0,90,0])
 			rivet_course_rounded(0, 0.02, 0.01, 0.017, $fn=rivet_segments);
-	end_course_length=cistern_width-(cistern_corner*7);
+	end_course_length=cistern_width-(cistern_corner*8);
 	translate([cistern_length,-(end_course_length/2)+0.025,0.25])
 		rotate([90,0,90])
 			rivet_course_rounded(0, end_course_length, 0.01, 0.05, $fn=rivet_segments);

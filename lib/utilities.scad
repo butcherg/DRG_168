@@ -608,7 +608,7 @@ module uncoupling_lever_bracket(height=0.06) {
 	//translate([0,-0.007,0.045]) rotate([0,43,0]) cube([0.002, 0.014, 0.025]);
 }
 
-uncoupling_lever_bracket();
+//uncoupling_lever_bracket();
 
 
 //### footplate()
@@ -936,8 +936,13 @@ module truck_bolster(width, height, thick, pad, padheight) {
 		[0, padheight]
 	];
 	
-	rotate([0,-90,0])
-		rotate([0,0,-90])
-			translate([-width/2,-(height+padheight)/2,-thick/2])
-				linear_extrude(thick) polygon(bolster_pts);
+	difference() {
+		rotate([0,-90,0])
+			rotate([0,0,-90])
+				translate([-width/2,-(height+padheight)/2,-thick/2])
+					linear_extrude(thick) polygon(bolster_pts);
+		translate([0,0,-height/2-padheight]) cylinder(d=pad/5, h=padheight, $fn=90);
+	}
 }
+
+//truck_bolster(width=1, height=0.3, thick=0.2, pad=0.1, padheight=0.1);
