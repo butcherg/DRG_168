@@ -57,6 +57,7 @@ translate(starboard_connecting_rod_position*25.4) rotate([0,4.2,0]) import("conn
 translate(cistern_position*25.4) import("cistern.stl");
 translate(tender_frame_position*25.4) import("tender_frame.stl");
 translate(tender_ladder_position*25.4) import("tender_ladder.stl");
+translate(tender_air_tank_position*25.4) import("tender_air_tank.stl");
 
 tender_truck_z=-0.07;
 translate([3.2,0,tender_truck_z]*25.4) import("tender_truck.stl");

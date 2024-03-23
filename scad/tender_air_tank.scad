@@ -1,9 +1,10 @@
 
 use <../lib/utilities.scad>
 
+l = 0.66;
+
 module tender_air_tank()
 {
-	l = 1;
 	od = 0.28;
 	id = 0.24;
 	t = 0.02;
@@ -77,4 +78,6 @@ module tender_air_tank()
 }
 
 scale(25.4)
-	tender_air_tank($fn=90);
+	translate([0,-l/2,0])
+		rotate([0,0,90])
+			tender_air_tank($fn=90);
