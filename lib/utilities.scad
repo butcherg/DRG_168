@@ -255,31 +255,22 @@ module roundedRect(size, radius, center=false)
 //- d: rope diameter
 //- f: controls the definition of the rope, decrease from default for debugging
 //
-module rope_rectangle(l=10, w=0.5, d=0.05, f=30) {
-	rect_pts = [
-		[0,0,d],
-		[0,l,d],
-		[w,l,d],
-		[w,0,d]
-		//[0,0,0]
-	];
-	circle_pts = [
-		[0,0,d/2],
-		[0,d,d/2],
-		[d,d,d/2],
-		[d,0,d/2]
-	];
-	circle_pts1 = [
-		[0,0],
-		[0,d],
-		[d,d],
-		[d,0],
-		[0,0]
-	];
-	path_pts = addnum(polyRound(rect_pts, f),0);
-	shape_pts = polyRound(circle_pts,f);
-	path_extrude(exPath=path_pts, exShape=shape_pts);
-	translate([d,d/2,-d/2]) rotate([0,90,0]) linear_extrude(w-d*2) circle(d=d, $fn=f*4);
+
+module rope_rectangle(l=10, w=0.5, d=0.05, f=20) {
+	$fn=f;
+	ln=l-d;
+	wn=w-d;
+	translate([d/2,d/2,-d/2])
+	rotate([-90,0,0]) {
+		cylinder(d=d, h=ln);
+		translate([wn,0,0]) cylinder(d=d, h=ln);
+		rotate([0,90,0]) cylinder(d=d, h=wn);
+		translate([0,0,ln]) rotate([0,90,0]) cylinder(d=d, h=wn);
+		sphere(d/2);
+		translate([wn,0,0]) sphere(d/2);
+		translate([0,0,ln]) sphere(d/2);
+		translate([wn,0,ln]) sphere(d/2);
+	}
 }
 
 //### hollow_cylinder(od=0.6, id=0.55, ht=0.5)
