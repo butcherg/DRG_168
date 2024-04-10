@@ -20,14 +20,15 @@ module driver_set() {
 	translate([0,-gauge/2+To+R1o,0]) rotate([90,20,0]) wheel();
 	translate([0,gauge/2-To-R1o,0]) rotate([-90,75,0]) wheel();
 	//axle:
-	rotate([90,0,0]) translate([0,0,-(gauge+Wo*2)/2])cylinder(d=1/16,h=gauge+Wo*2);
+	length_ext=0.04;
+	rotate([90,0,0]) translate([0,0,-(gauge+Wo*2+length_ext)/2])cylinder(d=1/16,h=gauge+Wo*2+length_ext);
 }
 
 $fn =  $preview ? 90 : 180;
 
 scale(25.4)
 	driver_set();
-
+echo(Wo);
 //use for gauge alignment:
 //translate([-3*25.4,0,-3.0]) scale(25.4)
 //	hon3_railsegment();
