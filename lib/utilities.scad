@@ -16,7 +16,15 @@ use <path_extrude.scad>
 //Appends n to vector v. Used with path_extrude to make paths that have been rounded with polyRound():
 //
 function addnum(v, n) =
-		[for (i = v) concat(i, n)];
+	[for (i = v) concat(i, n)];
+
+//###  contains(m, s)
+//
+//Searches string s for string m, returns true if found, false if not
+//
+function contains(match, string) = 
+	search(match, string) == [0] ? true : false;
+
 
 //***
 //## Common Definitions
@@ -247,31 +255,22 @@ module roundedRect(size, radius, center=false)
 //- d: rope diameter
 //- f: controls the definition of the rope, decrease from default for debugging
 //
-module rope_rectangle(l=10, w=0.5, d=0.05, f=30) {
-	rect_pts = [
-		[0,0,d],
-		[0,l,d],
-		[w,l,d],
-		[w,0,d]
-		//[0,0,0]
-	];
-	circle_pts = [
-		[0,0,d/2],
-		[0,d,d/2],
-		[d,d,d/2],
-		[d,0,d/2]
-	];
-	circle_pts1 = [
-		[0,0],
-		[0,d],
-		[d,d],
-		[d,0],
-		[0,0]
-	];
-	path_pts = addnum(polyRound(rect_pts, f),0);
-	shape_pts = polyRound(circle_pts,f);
-	path_extrude(exPath=path_pts, exShape=shape_pts);
-	translate([d,d/2,-d/2]) rotate([0,90,0]) linear_extrude(w-d*2) circle(d=d, $fn=f*4);
+
+module rope_rectangle(l=10, w=0.5, d=0.05, f=20) {
+	$fn=f;
+	ln=l-d;
+	wn=w-d;
+	translate([d/2,d/2,-d/2])
+	rotate([-90,0,0]) {
+		cylinder(d=d, h=ln);
+		translate([wn,0,0]) cylinder(d=d, h=ln);
+		rotate([0,90,0]) cylinder(d=d, h=wn);
+		translate([0,0,ln]) rotate([0,90,0]) cylinder(d=d, h=wn);
+		sphere(d/2);
+		translate([wn,0,0]) sphere(d/2);
+		translate([0,0,ln]) sphere(d/2);
+		translate([wn,0,ln]) sphere(d/2);
+	}
 }
 
 //### hollow_cylinder(od=0.6, id=0.55, ht=0.5)
@@ -315,6 +314,22 @@ module half_sphere(d=1) {
 	];
 	rotate_extrude(angle=360) polygon(polyRound(pts, 20));
 }
+
+//### carving_arc()
+//
+//Makes a cube with a 90-degree arg cut into it for making curved corners. 
+//
+//- radius: radius of the arc
+//- length: length of the cube containing the arc
+
+module carving_arc(r=1, l=1)
+{
+	difference() {
+		cube([r,r,l]);
+		translate([0,0,-0.001]) cylinder(d=r, h=l*2, $fn=90);
+	}
+}
+
 
 //***
 //## Rivet Modules
@@ -484,6 +499,25 @@ module stanchion(height=0.05, base=0.03, ball=0.04, hole=0.025)
 	}
 }
 
+//### end_ball(diameter=0.04, hole=0.025)
+//
+//Makes a handrail end ball.
+//
+//- diameter: ball diameter
+//- hole: railing hole diameter
+//
+module end_ball(diameter=0.04, hole=0.025)
+{
+	translate([0,0,diameter/2])
+	difference() {
+		sphere(d = diameter);
+		translate([0,diameter/4,0]) 
+			rotate([90,0,0])cylinder(d=hole);
+	}
+}
+
+//end_ball($fn=90);
+
 //### snifter_valve()
 //
 //Makes a HO scale snifter valve, goes on the cylinder chest.  Probably specific to the T-12s
@@ -535,6 +569,113 @@ module nutretainer_0_80(d=(5/32)*2) {
 		translate([0, 0, -height]) cylinder(d=widthacrossflats*1.2, h=height*3, $fn=6);
 	}
 }
+
+//### brake_lever_bracket()
+//
+//Makes a HO scale brake lever bracket. 
+//
+//(no parameters)
+//
+
+module uncoupling_lever_bracket(height=0.06) {
+
+	bracket_pts = [
+[0.080,0.000,0.000],
+[0.015,0.000,0.005],
+[0.015,height-0.025,0.011],
+[0.000,height-0.025,0.005],
+[0.000,height,0.005],
+[0.0115,height,0.000],
+[0.0115,height-0.015,0.000],
+[0.0215,height-0.015,0.000],
+[0.0215,height,0.000],
+[0.034,height,0.005],
+[0.034,0.010,0.000],
+[0.08,0.010,0.000]
+];
+	translate([0,0.015/2,0]) rotate([90,0,0]) linear_extrude(0.019) polygon(polyRound(bracket_pts, 10));
+	translate([0.045,0,0]) cylinder(d=0.01, h=0.015, $fn=6);
+	translate([0.07,0,0]) cylinder(d=0.01, h=0.015, $fn=6);
+	//translate([0,-0.007,0.045]) rotate([0,43,0]) cube([0.002, 0.014, 0.025]);
+}
+
+//uncoupling_lever_bracket();
+
+
+//### footplate()
+//
+//Makes a HO scale footplate. 
+//
+//(no parameters)
+//
+module footplate()
+{
+	width = 0.12;
+	depth =  0.08;
+	height = 0.026;
+	thick = 0.02;
+	
+	hangar_pts = [
+		[0.000,0.000,0.000],
+[0.000,0.160,0.000],
+[0.015,0.160,0.000],
+[0.015,0.015,0.000],
+[0.04,0.015,0.000],
+[0.04,0.000,0.000],
+[0.000,0.000,0.000]
+	];
+
+	hangar_pts1 = [
+	[0.000,0.000,0.000],
+[0.000,0.160,0.000],
+[0.035,0.160,0.000],
+[0.035,0.015,0.000],
+[0.060,0.015,0.000],
+[0.060,0.000,0.000],
+[0.000,0.000,0.000]
+	];
+	
+	//plate:
+	difference() {
+		cube([depth, width, height], center=true);
+		translate([-thick/2,0,thick/2]) cube([depth, width-thick, height], center=true);
+		translate([-depth/4, width, -0.007]) rotate([90,-90,0]) carving_arc(depth/2, width*2);
+	}
+	//hangar:
+	translate([depth/1.5+0.015,-width/8,-height+0.00]) 
+		rotate([90,0,180]) 
+			linear_extrude(width/4) 
+				polygon(polyRound(hangar_pts1,2));
+
+	//mounting bolts:
+	translate([depth/2.3-0.007, 0, 0.08])
+		rotate([0,90,0]) 
+			cylinder(d=0.015, h=0.008, $fn=6);
+	translate([depth/2.3-0.007, 0, 0.12])
+		rotate([0,90,0]) 
+			cylinder(d=0.015, h=0.008, $fn=6);
+	
+}
+
+//footplate();
+
+//### elbow()
+//
+//Makes a HO scale plumbing 90-degree elbow. 
+//
+//-piperadius: radius of the pipe
+//-elbowradius: radius of the elbow
+//
+
+module elbow(piperadius=1, elbowradius=1.3) {
+	translate([0,-elbowradius,0]) 
+		rotate_extrude(angle=90) 
+			translate([elbowradius,0,0])
+				circle(piperadius);
+			
+}
+
+//elbow($fn=90);
 
 //
 //***
@@ -786,8 +927,13 @@ module truck_bolster(width, height, thick, pad, padheight) {
 		[0, padheight]
 	];
 	
-	rotate([0,-90,0])
-		rotate([0,0,-90])
-			translate([-width/2,-(height+padheight)/2,-thick/2])
-				linear_extrude(thick) polygon(bolster_pts);
+	difference() {
+		rotate([0,-90,0])
+			rotate([0,0,-90])
+				translate([-width/2,-(height+padheight)/2,-thick/2])
+					linear_extrude(thick) polygon(bolster_pts);
+		translate([0,0,-height/2-padheight]) cylinder(d=pad/5, h=padheight, $fn=90);
+	}
 }
+
+//truck_bolster(width=1, height=0.3, thick=0.2, pad=0.1, padheight=0.1);

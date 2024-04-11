@@ -6,9 +6,9 @@ rod_width=0.03;
 rod_height=0.04;
 bearing_hole=0.03;
 
-module crosshead_bearing() {
+module crosshead_bearing(width=0.035) {
 	length=0.13;
-	width=0.035;
+	//width=0.035;
 	height=0.05;
 	bearing_offset=0.04;
 	bearing_fillet=0.1;
@@ -22,9 +22,9 @@ module crosshead_bearing() {
 	}
 }
 
-module crankpin_bearing() {
+module crankpin_bearing(details=1, width=0.035) {
 	length=0.17;
-	width=0.035;
+	//width=0.035;
 	height=0.07;
 	bearing_offset=0.11;
 	bearing_fillet=0.1;
@@ -39,21 +39,23 @@ module crankpin_bearing() {
 		
 	}
 	
-	//bearing flange:
-	translate([0,(rod_width*1.3)/2])
-		rotate([90,0,0]) 
-			cylinder(d=bearing_hole*bearing_flange, h=rod_width*1.3);
+	if (details) {
+		//bearing flange:
+		translate([0,(rod_width*1.3)/2])
+			rotate([90,0,0]) 
+				cylinder(d=bearing_hole*bearing_flange, h=rod_width*1.3);
 	
-	//bolts:
-	translate([-0.1,0,-(height*1.3)/2]) 
-		cylinder(d=rod_width*0.7, h=height*1.3, $fn=6);
-	translate([-0.07,0,-(height*1.3)/2]) 
-		cylinder(d=rod_width*0.7, h=height*1.3, $fn=6);
-	translate([-0.04,0,-(height*1.3)/2]) 
-		cylinder(d=rod_width*0.7, h=height*1.3, $fn=6);
+		//bolts:
+		translate([-0.1,0,-(height*1.3)/2]) 
+			cylinder(d=rod_width*0.7, h=height*1.3, $fn=6);
+		translate([-0.07,0,-(height*1.3)/2]) 
+			cylinder(d=rod_width*0.7, h=height*1.3, $fn=6);
+		translate([-0.04,0,-(height*1.3)/2]) 
+			cylinder(d=rod_width*0.7, h=height*1.3, $fn=6);
 	
-	//lubricator
-	bearing_lubricator(rod_width*0.7, 0.07);
+		//lubricator
+		bearing_lubricator(rod_width*0.7, 0.07);
+	}
 }
 
 module connecting_rod_blank() {

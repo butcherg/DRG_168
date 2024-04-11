@@ -296,7 +296,12 @@ module tender_truck_side() {
 	
 }
 
-
+module axle_cutout() {
+	gauge=((3*12)/87); //HOn3
+	Wo = 0.056;
+	length_ext=0.04;
+	rotate([90,0,0]) translate([0,0,-(gauge+Wo*2+length_ext)/2])cylinder(d=1/14.5,h=gauge+Wo*2+length_ext);
+}
 
 module tender_truck() {
 	spacing=0.5;
@@ -307,6 +312,10 @@ module tender_truck() {
 
 $fn = $preview ? 90 : 180;
 
-scale(25.4)
-	tender_truck();
-
+scale(25.4) {
+	difference() {
+		tender_truck();
+		translate([0.055,0,0.07]) axle_cutout();
+		translate([0.625,0,0.07]) axle_cutout();
+	}
+}

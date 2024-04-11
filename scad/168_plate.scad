@@ -32,6 +32,7 @@ module 168_plate() {
 
 	color("#ff0000") cylinder(d=0.18, h=extrudeextent/2);
 	rotate_extrude(angle=360) translate([0.08,0,0]) polygon(polyRound(rim_pts, 10));
+	translate([0,0,-0.09]) cylinder(d=0.03, h=0.1);
 }
 
 

@@ -20,8 +20,9 @@ rear_screw_hole = 2.25-adjustment20230705;
 //translate vectors.  For each part, what it takes to orient it relative to the frame, in HO decimal inches
 
 frontend_assembly_position = [-0.785, 0, 0.08]; 
+pilot_truck_position = [-0.59, 0, -0.07];
 
-smokebox_boiler_firebox_position = [-0.462-adjustment20230705, 0, 0.295]; 
+smokebox_boiler_firebox_position = [-0.462-adjustment20230705, 0, 0.32]; 
 //smokebox_boiler_firebox_position = [-0.462, 0, 0.495]; 
 smokebox_front_position = [-0.476-adjustment20230705, 0, 0.61]; 
 168_plate_position = [-0.53-adjustment20230705, 0, 0.61];
@@ -34,17 +35,23 @@ steamdome_position = [1.28, 0, 0.86];
 bell_hangar_assembly_position = [1.673-adjustment20230705, 0, 0.99]; 
 generator_position = [1.909-adjustment20230705, 0, 0.935]; 
 compressor_position = [1.29-adjustment20230705, -0.429, 0.4];
+whistle_position = [1.33, -0.13, 1.2];
 
 cab_position = [2.12205-adjustment20230705, 0, 0.272]; 
 firebox_backhead_position = [2.291-adjustment20230705, 0, 0.646]; 
 
 port_crosshead_position = [0.375-adjustment20230705, -0.34, -0.025];
 starboard_crosshead_position = [0.293-adjustment20230705, 0.34, -0.025];
-port_siderod_position = [0.085-adjustment20230705, -0.285, 0.085];
+port_siderod_position = [0.092-adjustment20230705, -0.285, 0.089];
 starboard_siderod_position = [0.0-adjustment20230705, 0.285, 0.0];
 port_connecting_rod_position = [0.465+1.01-adjustment20230705, -0.34, 0.085];
 starboard_connecting_rod_position = [0.38+1.01-adjustment20230705, 0.34, 0.0];
 
-cistern_position = [3.181-adjustment20230705,0,0.298]; //preliminary...
-tender_frame_position = [2.91-adjustment20230705,0,0.175];
+crossheadguide_hangar_position = [0.46, 0, -0.08];
+
+cistern_position = [3.181-adjustment20230705,0,0.273]; //preliminary...
+tender_frame_position = [2.91-adjustment20230705,0,0.15];
+tender_ladder_position = [5.49, 0, 0.3];
+tender_air_tank_position = [5, 0, 0.97];
+
 

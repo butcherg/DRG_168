@@ -1,5 +1,14 @@
 
 use <../lib/Round-Anything/polyround.scad>
+use <../lib/utilities.scad>
+include <../lib/globals.scad>
+
+/*
+// for integration:
+use <cistern.scad>  //for cistern spacers
+use <tender_truck.scad>
+
+*/
 
 frame_length=2.85;  //from Pruitt
 frame_width=0.77;  //from DSZ_1511
@@ -59,10 +68,36 @@ module tender_frame() {
 		plank(frame_width);
 	translate([(frame_length-plank_width*2), 0,frame_height])
 		plank(frame_width);
+		
+	//truck bolsters:
+	translate([0.705,0,0.045])
+		truck_bolster(width=frame_width, height=frame_height, thick=0.07, pad=0.1, padheight=0.03);
+	translate([2.405,0,0.045])
+		truck_bolster(width=frame_width, height=frame_height, thick=0.07, pad=0.1, padheight=0.03);
 	
-
+	//cistern positioning keys:
+	rear_key_length=frame_width-0.06;
+	translate([frame_length-0.345,-rear_key_length/2,frame_height]) 
+		cube([0.1, rear_key_length, 0.1]);
+	translate([0.5, (-0.09/2)+frame_width/2-0.047, frame_height]) 
+		cube([0.5, 0.09, 0.09]);
+	translate([0.5, (-0.09/2)-frame_width/2+0.047, frame_height]) 
+		cube([0.5, 0.09, 0.09]);
 }
 
 scale(25.4) {
-	tender_frame();
+	//translate(tender_frame_position) 
+		tender_frame();
+	/*
+	translate(cistern_position) 
+		difference() {
+			cistern();
+			translate([-0.1,-frame_width,0.1])cube([frame_length,frame_width*2,1]);
+		}
+	*/
+	/*
+	tender_truck_z=-0.08;
+	translate([3.2,0,tender_truck_z]) color("green") tender_truck();
+	translate([4.9,0,tender_truck_z]) color("green") tender_truck();
+	*/
 }

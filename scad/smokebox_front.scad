@@ -48,14 +48,18 @@ module smokebox_front()
 	rotate([0,-90,0]) {
 		//smokebox face:
 		//color("#cccccc") 
-		rotate_extrude()
-			polygon(polyRound(168_front));
+		difference() {
+			rotate_extrude()
+				polygon(polyRound(168_front));
+			translate([0, 0, -0.03])
+				cylinder(d=0.032, h=0.1);
+		}
 		
 		//alignment flange:
 		rotate([0, 90, 0]) {
 			difference() {
-				boilercourse(0.61-0.0256*2, 0.15, 0.03);
-				translate([-0.03, -0.045/2, -0.61/2+0.01]) cube([0.3, 0.045, 0.05]);
+				boilercourse(0.55, 0.2, 0.04);
+				translate([-0.03, -0.045/2, -0.61/2+0.01]) cube([0.3, 0.048, 0.05]);
 			}
 		}
 	
@@ -79,7 +83,15 @@ module smokebox_front()
 	
 		}
 	
-	
+		//handrail stanchions:
+		rotate([0,0,42])
+			translate([0.285,0,0.014])
+				rotate([0,0,90])
+					stanchion();
+		rotate([0,0,-42])
+			translate([0.285,0,0.014])
+				rotate([0,0,90])
+					stanchion();
 	}
 	smokebox_hinge_assy();
 }

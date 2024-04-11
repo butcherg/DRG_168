@@ -4,7 +4,7 @@ leadcenter=1.54-0.75;
 maincenter=2.14-0.75;
 rearcenter=3.12-0.75;
 
-module rod_bearing(diameter=5, hole=3, thickness=2) {
+module rod_bearing(diameter=5, hole=3, thickness=2, details=1) {
 	bearing_flange=1.4;
 	rotate([90,0,0])
 		union() {
@@ -17,11 +17,13 @@ module rod_bearing(diameter=5, hole=3, thickness=2) {
 				cube([thickness,diameter*1.2,thickness], center=true);
 		}
 		
-		translate([0,(rod_width*1.3)/2])
-		rotate([90,0,0]) 
-			cylinder(d=bearing_hole*bearing_flange, h=rod_width*1.3);
-			
-		bearing_lubricator(thickness*0.7, 0.07);
+		if (details) {
+			translate([0,(rod_width*1.3)/2])
+				rotate([90,0,0]) 
+					cylinder(d=bearing_hole*bearing_flange, h=rod_width*1.3);
+		
+			bearing_lubricator(thickness*0.7, 0.07);
+		}
 }
 
 rod_width=0.03;

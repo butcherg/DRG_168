@@ -1,12 +1,17 @@
 
 
 include <utilities.scad>
+use <168_pilot.scad>
 
+//for pilot support integration:
+//include <globals.scad>
+//use <../scad/smokebox_boiler_firebox_assembly.scad>
 
 crownofst=0.008;
 
 module steamcylinder() {
-	translate([-0.025,0,0.02]) rotate([0,90,0]) difference() {
+	translate([-0.025,0,0.02]) rotate([0,90,0]) 
+	difference() {
 		union() {
 			//cylinder(h=0.35,d=.25);
 			cylinder(h=0.40,d=.25);
@@ -14,6 +19,7 @@ module steamcylinder() {
 			//translate([0, 0, 0.35-0.025]) cylinder(h=0.025,d=.259);
 			translate([0, 0, 0.40-0.025]) cylinder(h=0.025,d=.259);
 		}
+		//translate([0.2,0.0,0.0]) rotate([0,90,0]) cylinder(d=0.03, h=0.5);
 	}
 }
 
@@ -98,7 +104,7 @@ module cylinderchest1() {
 
 //removes screw hole and frame cutout in cylinderchest:
 module cylinderchest() {
-	tabslop=0.01; //add to the tab width and thickness 
+	tabslop=0.005; //add to the tab width and thickness 
 	tablength=0.25;
 	//K&S brass strip sku #8245, 0.064" thick, 1/4" wide, 12" long
 	tabthickness=0.064+tabslop;
@@ -109,7 +115,7 @@ module cylinderchest() {
 		cylinderchest1();
 		//translate([0.33/2-0.04/2,0,-0.001]) cylinder(h=2, d=screwhole_0_80, $fn=90);	//smokebox-cylinderchest-frame hole
 		//translate([0.33/2,0,-0.001]) cylinder(h=2, d=screwhole_0_80, $fn=90);	//smokebox-cylinderchest-frame hole
-		translate([0.33-tablength+0.001, -tabwidth/2, 0.1]) cube([tablength, tabwidth, tabthickness]);
+		translate([0.33-tablength+0.001, -tabwidth/2, 0.123]) cube([tablength, tabwidth, tabthickness]);
 	}
 	
 	//adds the pilot truck pillar:
@@ -168,7 +174,34 @@ module frontend() {
 	translate([0.43,-(framewidth/2)+(framethickness/2),frameheight+frontend_offset]) cylinder(d=0.02, h=0.01, $fn=6);
 
 	//front beam:
-	translate([-0.07,-0.95/2,frameheight-0.17+frontend_offset]) roundedbox([0.07,0.95,0.15], 0.03);
+	difference() {
+		union() {
+			translate([-0.07,-0.95/2,frameheight-0.17+frontend_offset]) roundedbox([0.07,0.95,0.15], 0.03);
+			translate([-0.07,-0.252,0.097]) cube([0.07,0.03,0.01]);
+			translate([-0.07,0.22,0.097]) cube([0.07,0.03,0.01]);
+			translate([-0.032,0.235,0.097]) cylinder(d=0.02, h=0.02, $fn=6);
+			translate([-0.057,0.235,0.097]) cylinder(d=0.02, h=0.02, $fn=6);
+			translate([-0.032,-0.235,0.097]) cylinder(d=0.02, h=0.02, $fn=6);
+			translate([-0.057,-0.235,0.097]) cylinder(d=0.02, h=0.02, $fn=6);
+		}
+		//pilot support cutouts (to smokebox)
+		translate([-0.1,0.22,0.025]) rotate([0,50,9.7]) cylinder(d=0.023, h=0.59);
+		translate([-0.1,-0.22,0.025]) rotate([0,50,-9.7]) cylinder(d=0.023, h=0.59);
+	}
+	
+	
+	
+	//uncoupling bar brackets:
+	translate([-0.09,0.04,0.097]) uncoupling_lever_bracket(0.05);
+	translate([-0.09,-0.04,0.097]) uncoupling_lever_bracket(0.05);
+	translate([-0.09,0.42,0.097]) uncoupling_lever_bracket(0.05);
+	translate([-0.09,-0.42,0.097]) uncoupling_lever_bracket(0.05);
+	
+	//footplates:
+	translate([-0.12,0.4,-0.11]) footplate();
+	translate([-0.12,-0.4,-0.11]) footplate();
+	
+	//translate([-0.35-0.07,0,-0.153]) pilot(); // for alignment hole placement
 
 	//footboard:
 	translate([-0.02,0.13,0.1+frontend_offset])  footboard(0.446, 0.3, 0.03, 0.015, 0.015, 6); //footboard orig x=0.43, extended to touch cylinder for printing
@@ -184,6 +217,12 @@ $fn = $preview ? 90 : 180;
 //frontend();
 
 //for print, render and export to .stl:
-scale(25.4)
-	frontend();
+scale(25.4) 
+//	translate(frontend_assembly_position) // for pilot support integration
+		frontend();
+
+//for pilot support integration:
+//scale(25.4)
+//	translate(smokebox_boiler_firebox_position) 
+//		smokebox_boiler_firebox_assembly();
 
