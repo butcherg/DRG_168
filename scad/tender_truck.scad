@@ -307,7 +307,12 @@ module tender_truck() {
 	spacing=0.5;
 	translate([0,-spacing/2,0]) rotate([90,0,0]) tender_truck_side();
 	translate([0.6815,spacing/2,0]) rotate([90,0,180]) tender_truck_side();
-	translate([(0.6815/2)-0.05,-spacing/2,0.17]) cube([0.1, spacing, 0.04]);
+	translate([(0.6815/2)-0.05,0,0.17]) 
+	difference() {
+		translate([0,-spacing/2,0])
+			cube([0.1, spacing, 0.04]);
+		translate([0.048,0,-0.5]) cylinder(d=0.05, h=1);
+	}
 }
 
 $fn = $preview ? 90 : 180;
